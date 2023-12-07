@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc2wdikhqff8v"]
+[gd_scene load_steps=4 format=3 uid="uid://dc2wdikhqff8v"]
+
+[ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_tycek"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l21aj"]
+material = ExtResource("1_tycek")
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0s0m"]
@@ -14,7 +17,6 @@ mesh = SubResource("PlaneMesh_l21aj")
 skeleton = NodePath("../../..")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="3DShape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3DShape/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.455, 0)
