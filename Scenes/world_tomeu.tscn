@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=5 format=3 uid="uid://dkitb42eo8qr4"]
+
+[ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
+[ext_resource type="Texture2D" uid="uid://dq5ly63qujocu" path="res://Art/plant/10443_Fern_v1_Diffuse.jpg" id="2_dand7"]
+[ext_resource type="ArrayMesh" uid="uid://bu4q7w56g24h4" path="res://Art/plant/10443_Fern_v2_max2011_it2.obj" id="3_dwd0y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s80x8"]
+albedo_texture = ExtResource("2_dand7")
 
 [node name="WorldTomeu" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" parent="World" instance=ExtResource("1_s8jru")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Plant" type="MeshInstance3D" parent="World"]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, -0.145834, 0)
+material_override = SubResource("StandardMaterial3D_s80x8")
+mesh = ExtResource("3_dwd0y")
+skeleton = NodePath("../..")
