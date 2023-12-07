@@ -11,12 +11,20 @@ config_version=5
 [application]
 
 config/name="Softjam 2023"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+run/main_scene="res://Prefabs/Player/controlable_player.tscn"
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Softjam 2023"
+
+[input]
+
+player_look={
+"deadzone": 0.5,
+"events": []
+}
 
 [rendering]
 

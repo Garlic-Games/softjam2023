@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjwk3opwcwvc"]
+
+[ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21y1c"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ctu7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ayhq"]
+size = Vector3(20, 0.015, 20)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00803524, 1.19209e-07, -0.00165653)
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_21y1c")
+mesh = SubResource("PlaneMesh_4ctu7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_1ayhq")
+
+[node name="ControlablePlayer" parent="." instance=ExtResource("1_lrtr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00484, 0.410738, -0.0131979)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.912984, -0.407996, 0, 0.407996, -0.912984, 0, 0, 0, 1, 56.598, 73.1171, -12.0302)
+light_energy = 7.303
+light_indirect_energy = 2.131
+light_volumetric_fog_energy = 4.232
+directional_shadow_split_1 = 0.776
+directional_shadow_split_2 = 0.574
+directional_shadow_max_distance = 2091.5

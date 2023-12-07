@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://pkto7eqenqon"]
+
+[ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
+[ext_resource type="Script" path="res://Scripts/GravityAffected.cs" id="1_nnbjt"]
+[ext_resource type="Script" path="res://Scripts/Player/HeadRotation.cs" id="3_nr11c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jee4i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xihnr"]
+
+[node name="ControlablePlayer" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00484419, -0.0649334, -0.0131979)
+script = ExtResource("1_1erty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02933, -0.0390887)
+shape = SubResource("CapsuleShape3D_jee4i")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977215, 0)
+mesh = SubResource("CapsuleMesh_xihnr")
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="GravityAffected" type="Node" parent="Scripts"]
+script = ExtResource("1_nnbjt")
+
+[node name="HeadRotation" type="Node3D" parent="."]
+script = ExtResource("3_nr11c")
+
+[node name="Camera3D" type="Camera3D" parent="HeadRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.235334, 1.78498, 3.01708)
