@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dc42rdb1qhyvq"
+path="res://.godot/imported/tension 1 sin transicion.wav-01093c308b77fa91a82da18d0c658d18.sample"
+
+[deps]
+
+source_file="res://Sounds/Song/tension 1 sin transicion.wav"
+dest_files=["res://.godot/imported/tension 1 sin transicion.wav-01093c308b77fa91a82da18d0c658d18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

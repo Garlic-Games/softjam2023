@@ -8,12 +8,32 @@ public partial class StateMachine : Node
 	[Signal]
 	public delegate void StateChangedEventHandler(int state);
 
-	public GameStates State { get; private set; }
+    public GameStates State { get; private set; } = GameStates.GameOver;
 
-	public void ChangeState(GameStates newState)
+    public override void _Ready()
+    {
+        ChangeState(GameStates.Intro);
+    }
+
+    public void ChangeState(GameStates newState)
 	{
 		if(State == newState) return;
 		
+		switch(newState)
+		{
+			case GameStates.Intro:
+				MusicManager.Instance.PlayIntro(); 
+				break;
+            case GameStates.Calm:
+                MusicManager.Instance.PlayIntro();
+                break;
+            case GameStates.Warning:
+                MusicManager.Instance.PlayIntro();
+                break;
+            case GameStates.Danger:
+                MusicManager.Instance.PlayIntro();
+                break;
+        }
         State = newState;
 		
 		EmitSignal(SignalName.StateChanged, (int)newState);

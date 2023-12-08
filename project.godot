@@ -18,10 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 ObjectInstanceProviderAutoLoad="*res://Scripts/Autoload/ObjectInstanceProviderAutoLoad.cs"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
+MusicManager="*res://Scripts/Autoload/MusicManager.cs"
 
 [dotnet]
 
 project/assembly_name="Softjam 2023"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [input]
 
