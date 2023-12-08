@@ -20,6 +20,7 @@ shape = SubResource("CapsuleShape3D_jee4i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977215, 0)
+gi_mode = 0
 mesh = SubResource("CapsuleMesh_xihnr")
 
 [node name="Scripts" type="Node" parent="."]
@@ -27,8 +28,8 @@ mesh = SubResource("CapsuleMesh_xihnr")
 [node name="GravityAffected" type="Node" parent="Scripts"]
 script = ExtResource("1_nnbjt")
 
-[node name="HeadRotation" type="Node3D" parent="."]
+[node name="HeadTilt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76052, 0)
 script = ExtResource("3_nr11c")
 
-[node name="Camera3D" type="Camera3D" parent="HeadRotation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.235334, 1.78498, 3.01708)
+[node name="Camera3D" type="Camera3D" parent="HeadTilt"]

@@ -1,27 +1,21 @@
 using Godot;
-using System;
 
 public partial class HeadRotation : Node3D
 {
+    [Export] private float camera_sens = 0.7f;
 
-    [ExportCategory("Player")] 
-    [Export] 
-    private float speed = 10f;
-
-    [Export] 
-    private float acceleration = 100f;
-
-    [Export] 
-    private float jump_height = 1f;
-    
-    [Export] 
-    private float camera_sens = 1f;
-        
     private Vector2 look_dir;
     private bool mouse_captured;
-    
+
+    private MainPlayerController player;
+    private Node3D headTilt;
+
+    private float xRotation = 0f;
+
     public override void _Ready()
     {
+        player = GetParent<MainPlayerController>();
+        headTilt = GetChild<Node3D>(0);
         capture_mouse();
     }
 
@@ -30,12 +24,10 @@ public partial class HeadRotation : Node3D
     {
         if (@event is InputEventMouseMotion motion)
         {
-            look_dir = motion.Relative * 0.001f;
-            
-        }
-        if (mouse_captured)
-        {
-            _rotate_camera();
+            if (mouse_captured)
+            {
+                _rotate_camera(motion.Relative);
+            }
         }
         // if Input.is_action_just_pressed("jump"): jumping = true
         // if Input.is_action_just_pressed("exit"): get_tree().quit()
@@ -54,24 +46,21 @@ public partial class HeadRotation : Node3D
         mouse_captured = false;
     }
 
-    private void _rotate_camera(float sens_mod = 1.0f)
+    private void _rotate_camera(Vector2 look_dir)
     {
-        RotateY(Rotation.Y - look_dir.X * camera_sens * sens_mod);
-        RotateX(Math.Clamp(Rotation.X - look_dir.Y * camera_sens * sens_mod, -1.5f, 1.5f));
-    }
-    public void _handle_joypad_camera_rotation(float delta, float sens_mod = 1.0f) {
-        // var joypad_dir:
-        // Vector2 lookInput = Input.GetVector("look_left", "look_right", "look_up", "look_down");
-        // if lookInput.() > 0:
-        // look_dir += joypad_dir * delta
-        // _rotate_camera(sens_mod)
-        // look_dir = Vector2.ZERO
+        float xRad = Mathf.DegToRad(look_dir.X * camera_sens);
+        player.RotateObjectLocal(new Vector3(0, -1, 0), xRad);
+
+        float newYAngle = xRotation + look_dir.Y * camera_sens;
+        xRotation = Mathf.Clamp(newYAngle, -90f, 90f);
+
+
+        // RotateObjectLocal(Vector3.Up, yAngles);
+        headTilt.Basis = new Basis(new Vector3(-1, 0, 0), Mathf.DegToRad(xRotation));
+        // headTilt.setlocal(new  Vector3(-1, 0, 0), xRad);
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (mouse_captured){
-            _handle_joypad_camera_rotation((float) delta);
-        }
     }
 }

@@ -1,10 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=7 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21y1c"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uylvt"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3serx"]
+noise = SubResource("FastNoiseLite_uylvt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xklc6"]
+albedo_color = Color(0.960784, 0.4, 0.0901961, 1)
+albedo_texture = SubResource("NoiseTexture2D_3serx")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4ctu7"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_xklc6")
+subdivide_width = 5
+subdivide_depth = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ayhq"]
 size = Vector3(20, 0.015, 20)
@@ -16,8 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00803524, 1.19209e-07, -0.0
 gravity_scale = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_21y1c")
+transform = Transform3D(20, 0.00226031, 0.00823557, -0.00226466, 20, 0.0120487, -0.0082342, -0.0120496, 20, 0, 0, 0)
 mesh = SubResource("PlaneMesh_4ctu7")
 skeleton = NodePath("../..")
 
@@ -28,10 +39,10 @@ shape = SubResource("BoxShape3D_1ayhq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00484, 0.410738, -0.0131979)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.912984, -0.407996, 0, 0.407996, -0.912984, 0, 0, 0, 1, 56.598, 73.1171, -12.0302)
-light_energy = 7.303
+transform = Transform3D(-0.912984, -0.407996, 0, -0.356023, 0.796684, 0.488408, -0.199268, 0.445909, -0.872615, -10.7329, 57.5791, -2.71719)
+light_energy = 0.838
 light_indirect_energy = 2.131
 light_volumetric_fog_energy = 4.232
 directional_shadow_split_1 = 0.776
 directional_shadow_split_2 = 0.574
-directional_shadow_max_distance = 2091.5
+directional_shadow_max_distance = 72.1
