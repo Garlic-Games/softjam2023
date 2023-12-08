@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://edrnnsms51l1"
+path="res://.godot/imported/Tema Loop Tension 2.wav-4005ff7a2c0dddd8eda7eabb274556ab.sample"
+
+[deps]
+
+source_file="res://Sounds/Song/Tema Loop Tension 2.wav"
+dest_files=["res://.godot/imported/Tema Loop Tension 2.wav-4005ff7a2c0dddd8eda7eabb274556ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -70,6 +70,7 @@ public partial class Temperatura : Node3D
         {
             heatSources = _maxHeatSources;
         }
+
         _currentTemperature += _tempAugment * heatSources;
         if (_currentTemperature > _maxTemperature)
         {
@@ -90,7 +91,7 @@ public partial class Temperatura : Node3D
         switch (_status)
         {
             case TemperatureStatus.Calm:
-                if (_currentTemperature > _dangerTreshold)
+                if (_currentTemperature > _warningTreshold)
                 {
                     _status = TemperatureStatus.Warning;
                     EmitSignal(SignalName.WarningTemperatureReached);
