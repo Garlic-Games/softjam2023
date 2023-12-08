@@ -24,6 +24,7 @@ mesh = SubResource("PlaneMesh_l21aj")
 skeleton = NodePath("../../..")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Plane"]
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.455, 0)

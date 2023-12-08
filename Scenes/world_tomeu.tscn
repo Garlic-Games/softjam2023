@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=5 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
-[ext_resource type="Texture2D" uid="uid://dq5ly63qujocu" path="res://Art/plant/10443_Fern_v1_Diffuse.jpg" id="2_dand7"]
-[ext_resource type="ArrayMesh" uid="uid://bu4q7w56g24h4" path="res://Art/plant/10443_Fern_v2_max2011_it2.obj" id="3_dwd0y"]
-[ext_resource type="Script" path="res://Scenes/Sizer.cs" id="4_lcq43"]
+[ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
+[ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="4_t7pus"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
-[ext_resource type="Script" path="res://Scenes/Hidration.cs" id="5_j5lx5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s80x8"]
-albedo_texture = ExtResource("2_dand7")
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -17,31 +12,15 @@ albedo_texture = ExtResource("2_dand7")
 [node name="Ground" parent="World" instance=ExtResource("1_s8jru")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="Plant" type="MeshInstance3D" parent="World"]
-transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, -0.164787, 0)
-material_override = SubResource("StandardMaterial3D_s80x8")
-mesh = ExtResource("3_dwd0y")
-skeleton = NodePath("../..")
-
-[node name="Sizer" type="Node3D" parent="World/Plant"]
-script = ExtResource("4_lcq43")
-
-[node name="Hidration" type="Node3D" parent="World/Plant"]
-script = ExtResource("5_j5lx5")
-_currentHumidity = 6.0
-_growthTreshold = 5.0
-_maxHumidity = 10.0
-_minGrowthRatio = 0.1
-_maxGrowthRatio = 0.15
+[node name="Plant" parent="World" instance=ExtResource("2_yufc4")]
 
 [node name="WaterPond" parent="World" instance=ExtResource("4_wor1o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39574, -0.164827, 5.58518)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.996445, 0.0470984, -0.0698579, 0.0232272, 0.95059, 0.309581, 0.0809869, 0.306857, -0.948304, 2.35794, 4.59667, -5.85223)
-fov = 129.375
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.999148, 3.11225e-10, 0.0412654, 0.0236547, 0.819392, 0.572745, -0.0338125, 0.573233, -0.818694, 0, 7.07003, 0)
 light_energy = 2.5
 light_indirect_energy = 2.0
+
+[node name="ControlablePlayer" parent="." instance=ExtResource("4_t7pus")]
+transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 0.00484419, -0.0649334, -4.85937)
