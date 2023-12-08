@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvpry7jtfxm8v"]
+
+[ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_hew08"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_knljp"]
+resource_local_to_scene = true
+material = ExtResource("1_hew08")
+size = Vector3(10, 1, 10)
+
+[node name="WaterPond" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39574, 0, 5.58518)
+
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244312, -0.328131, 2.04347)
+mesh = SubResource("BoxMesh_knljp")
