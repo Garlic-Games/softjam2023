@@ -13,6 +13,6 @@ public partial class Sizer : Node3D
 
     public void Grow(float growthRate)
     {
-        _parent.Scale += _parent.Scale * growthRate;
+        _parent.Scale += Vector3.Up * growthRate;
     }
 }

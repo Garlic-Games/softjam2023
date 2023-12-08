@@ -16,6 +16,8 @@ height = 0.25
 
 [node name="ControlablePlayer" type="CharacterBody3D" node_paths=PackedStringArray("rifle")]
 transform = Transform3D(1, -0.000151426, 0.000116753, 0.000151426, 1, 1.72553e-05, -0.000116753, -1.72553e-05, 1, 0.00484419, -0.0649334, -0.0131979)
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_1erty")
 rifle = NodePath("Visuals/rifle/RifleMesh")
 

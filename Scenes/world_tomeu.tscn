@@ -13,9 +13,6 @@
 
 [node name="Ground" parent="World" instance=ExtResource("1_s8jru")]
 
-[node name="Plant" parent="World" instance=ExtResource("2_yufc4")]
-transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 1.91651, 0.0214982, 0.786318)
-
 [node name="WaterPond" parent="World" instance=ExtResource("4_wor1o")]
 transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -9.91012, -10.0267, -9.55147)
 
@@ -25,10 +22,12 @@ light_energy = 2.5
 light_indirect_energy = 2.0
 
 [node name="ControlablePlayer" parent="." instance=ExtResource("4_t7pus")]
-transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 3.87802, 3.44878, -7.55936)
+transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 13.2405, 3.44878, -7.55936)
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
-[node name="HumidityBar" parent="Ui" node_paths=PackedStringArray("_plant") instance=ExtResource("5_7bulw")]
+[node name="HumidityBar" parent="Ui" instance=ExtResource("5_7bulw")]
 script = ExtResource("6_ybgta")
-_plant = NodePath("../../World/Plant")
+
+[node name="Plant" parent="." instance=ExtResource("2_yufc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24361, -170.772, 1.21227)
