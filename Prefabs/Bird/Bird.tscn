@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4svigjgd5wlv"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdwf87ck8pxap" path="res://Art/bird/bird_scene.res" id="1_m4bsw"]
+
+[node name="Bird" type="Node3D"]
+
+[node name="BirdMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_m4bsw")

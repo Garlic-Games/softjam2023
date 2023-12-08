@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cr7gp51nh2vm6"
+path="res://.godot/imported/GOOSE.OBJ-771bf46de4325b448beb8742fb395890.mesh"
+
+[deps]
+
+files=["res://.godot/imported/GOOSE.OBJ-771bf46de4325b448beb8742fb395890.mesh"]
+
+source_file="res://Art/bird/GOOSE.OBJ"
+dest_files=["res://.godot/imported/GOOSE.OBJ-771bf46de4325b448beb8742fb395890.mesh", "res://.godot/imported/GOOSE.OBJ-771bf46de4325b448beb8742fb395890.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
