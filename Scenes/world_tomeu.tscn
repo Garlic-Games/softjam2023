@@ -19,7 +19,6 @@
 transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -9.91012, -10.0267, -9.55147)
 
 [node name="Temperatura" parent="World" instance=ExtResource("3_0rimc")]
-_warningTreshold = 2.0
 _tempAugment = 0.001
 
 [node name="Plant" parent="World" instance=ExtResource("2_yufc4")]
