@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=8 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="Texture2D" uid="uid://dq5ly63qujocu" path="res://Art/plant/10443_Fern_v1_Diffuse.jpg" id="2_dand7"]
 [ext_resource type="ArrayMesh" uid="uid://bu4q7w56g24h4" path="res://Art/plant/10443_Fern_v2_max2011_it2.obj" id="3_dwd0y"]
+[ext_resource type="Script" path="res://Scenes/Sizer.cs" id="4_lcq43"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
+[ext_resource type="Script" path="res://Scenes/Hidration.cs" id="5_j5lx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s80x8"]
 albedo_texture = ExtResource("2_dand7")
@@ -21,7 +23,19 @@ material_override = SubResource("StandardMaterial3D_s80x8")
 mesh = ExtResource("3_dwd0y")
 skeleton = NodePath("../..")
 
+[node name="Sizer" type="Node3D" parent="World/Plant"]
+script = ExtResource("4_lcq43")
+
+[node name="Hidration" type="Node3D" parent="World/Plant"]
+script = ExtResource("5_j5lx5")
+_currentHumidity = 6.0
+_growthTreshold = 5.0
+_maxHumidity = 10.0
+_minGrowthRatio = 0.1
+_maxGrowthRatio = 0.15
+
 [node name="WaterPond" parent="World" instance=ExtResource("4_wor1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39574, -0.164827, 5.58518)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.996445, 0.0470984, -0.0698579, 0.0232272, 0.95059, 0.309581, 0.0809869, 0.306857, -0.948304, 2.35794, 4.59667, -5.85223)
