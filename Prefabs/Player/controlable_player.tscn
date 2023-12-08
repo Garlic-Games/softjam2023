@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pkto7eqenqon"]
+[gd_scene load_steps=11 format=3 uid="uid://pkto7eqenqon"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
 [ext_resource type="PackedScene" uid="uid://cqxv80i3kbgrs" path="res://Art/rifle/rifle.tscn" id="2_60eft"]
@@ -9,6 +9,15 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jee4i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xihnr"]
+
+[sub_resource type="Sky" id="Sky_flokt"]
+
+[sub_resource type="Environment" id="Environment_uvxv8"]
+sky = SubResource("Sky_flokt")
+ambient_light_source = 3
+ambient_light_color = Color(0.380392, 0.988235, 0.968627, 0.764706)
+fog_enabled = true
+fog_light_color = Color(0.341176, 0.6, 0.619608, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kbnlc"]
 radius = 0.25
@@ -51,6 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76052, 0)
 script = ExtResource("3_nr11c")
 
 [node name="Camera3D" type="Camera3D" parent="HeadTilt"]
+environment = SubResource("Environment_uvxv8")
 
 [node name="AimPoint" type="Node3D" parent="HeadTilt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)

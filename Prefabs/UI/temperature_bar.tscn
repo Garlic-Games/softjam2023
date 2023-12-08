@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo43j1q4ha1xn"]
+
+[ext_resource type="Texture2D" uid="uid://dcjjjk15djbxf" path="res://Art/UI/humidityBar/bg.png" id="1_5l2mm"]
+[ext_resource type="Texture2D" uid="uid://gic6bsnc5gow" path="res://red.png" id="2_tpfow"]
+[ext_resource type="Script" path="res://Scripts/UI/TemperatureBar.cs" id="3_b6tlc"]
+
+[node name="TemperatureBar" type="TextureProgressBar"]
+z_index = -1
+offset_left = 30.0
+offset_top = 404.0
+offset_right = 421.0
+offset_bottom = 449.0
+rotation = -1.57528
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_5l2mm")
+texture_progress = ExtResource("2_tpfow")
+script = ExtResource("3_b6tlc")

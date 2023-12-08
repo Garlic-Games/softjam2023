@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Plant : MeshInstance3D
+public partial class Plant : Node3D
 {
     [Signal]
     public delegate void HumidityChangedEventHandler(float humidityPercentage);

@@ -25,7 +25,7 @@ public partial class Hidration : Node3D
 	public override void _Ready()
 	{
 		_sizer = GetNode<Sizer>("../Sizer");
-        _plant = GetParent<Plant>();
+        _plant = GetNode<Plant>("../..");
     }
 
 	public override void _Process(double delta)
@@ -36,6 +36,11 @@ public partial class Hidration : Node3D
 
     private void ReduceHumidity(double delta)
     {
+        if(_currentHumidity <= 0)
+        {
+            _currentHumidity = 0;
+            return;
+        }
         _currentHumidity -= Convert.ToSingle(_humidityTickPerSecond * delta);
         _plant.EmitHumidity((_currentHumidity / _maxHumidity) * 100);
     }

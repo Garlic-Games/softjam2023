@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://du7w0fkl3euh2"]
+
+[ext_resource type="Script" path="res://Scripts/Temperatura/Temperatura.cs" id="1_euwh2"]
+
+[node name="Temperatura" type="Node3D"]
+script = ExtResource("1_euwh2")
+_heatSources = 2
