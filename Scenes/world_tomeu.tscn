@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=9 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
 [ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
 [ext_resource type="PackedScene" uid="uid://bo43j1q4ha1xn" path="res://Prefabs/UI/temperature_bar.tscn" id="7_kop10"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="8_rkdg4"]
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -38,3 +39,6 @@ _plant = NodePath("../../World/Plant")
 
 [node name="TemperatureBar" parent="Ui" node_paths=PackedStringArray("_temperatura") instance=ExtResource("7_kop10")]
 _temperatura = NodePath("../../World/Temperatura")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("8_rkdg4")
