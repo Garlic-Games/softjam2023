@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://pkto7eqenqon"]
+[gd_scene load_steps=7 format=3 uid="uid://pkto7eqenqon"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
 [ext_resource type="Script" path="res://Scripts/GravityAffected.cs" id="1_nnbjt"]
+[ext_resource type="PackedScene" uid="uid://cqxv80i3kbgrs" path="res://Art/rifle/rifle.tscn" id="2_60eft"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadRotation.cs" id="3_nr11c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jee4i"]
@@ -22,6 +23,9 @@ shape = SubResource("CapsuleShape3D_jee4i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977215, 0)
 gi_mode = 0
 mesh = SubResource("CapsuleMesh_xihnr")
+
+[node name="rifle" parent="Visuals" instance=ExtResource("2_60eft")]
+transform = Transform3D(-0.025, 0, -2.18557e-09, 0, 0.025, 0, 2.18557e-09, 0, -0.025, 0.271119, 1.3885, -0.961126)
 
 [node name="Scripts" type="Node" parent="."]
 
