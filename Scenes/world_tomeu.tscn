@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="4_t7pus"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
-[ext_resource type="Texture2D" uid="uid://dcjjjk15djbxf" path="res://Art/UI/humidityBar/bg.png" id="5_ppnwb"]
-[ext_resource type="Texture2D" uid="uid://cok2ycg0s6v5" path="res://Art/UI/humidityBar/blue.png" id="6_tony6"]
+[ext_resource type="PackedScene" uid="uid://v5gvtshjpfw6" path="res://Prefabs/UI/humidity_bar.tscn" id="5_7bulw"]
+[ext_resource type="Script" path="res://Scripts/UI/HumidityBar.cs" id="6_ybgta"]
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -28,15 +28,6 @@ transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
-[node name="HumidityBar" type="TextureProgressBar" parent="Ui"]
-offset_left = 712.0
-offset_top = 38.0
-offset_right = 1103.0
-offset_bottom = 83.0
-step = 0.1
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("5_ppnwb")
-texture_progress = ExtResource("6_tony6")
-
-[connection signal="HumidityChanged" from="World/Plant" to="Ui/HumidityBar" method="set_value"]
+[node name="HumidityBar" parent="Ui" node_paths=PackedStringArray("_plant") instance=ExtResource("5_7bulw")]
+script = ExtResource("6_ybgta")
+_plant = NodePath("../../World/Plant")
