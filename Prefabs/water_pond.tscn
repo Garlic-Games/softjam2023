@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvpry7jtfxm8v"]
+[gd_scene load_steps=5 format=3 uid="uid://bvpry7jtfxm8v"]
 
 [ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_hew08"]
+[ext_resource type="Script" path="res://Prefabs/Water/RechargeWater.cs" id="1_x642s"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_knljp"]
-resource_local_to_scene = true
+[sub_resource type="CylinderMesh" id="CylinderMesh_aelrt"]
 material = ExtResource("1_hew08")
-size = Vector3(10, 1, 10)
+top_radius = 8.0
+bottom_radius = 6.0
+height = 20.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6khq"]
+size = Vector3(9.2533, 1, 9.99255)
 
 [node name="WaterPond" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39574, 0, 5.58518)
+script = ExtResource("1_x642s")
 
 [node name="water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244312, -0.328131, 2.04347)
-mesh = SubResource("BoxMesh_knljp")
+mesh = SubResource("CylinderMesh_aelrt")
+
+[node name="Area3D" type="Area3D" parent="water"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391907, 0, 0.0289917)
+shape = SubResource("BoxShape3D_j6khq")

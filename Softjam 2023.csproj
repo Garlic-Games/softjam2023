@@ -7,6 +7,8 @@
     <RootNamespace>Softjam2023</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Prefabs\Plant\" />
     <Folder Include="Prefabs\Player\" />
+    <Folder Include="Scenes\" />
   </ItemGroup>
 </Project>
