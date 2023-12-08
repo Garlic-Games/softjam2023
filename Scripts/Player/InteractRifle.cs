@@ -10,7 +10,7 @@ public partial class InteractRifle : Node
 
 	private float gunCharge = 5; //seconds
 	
-	private float _spawn_speed = 0.15f;
+	private float _spawn_speed = 0.09f;
 	private float _cooldown = 0f;
 	
 	public override void _Ready()
@@ -35,7 +35,7 @@ public partial class InteractRifle : Node
 		if (isShooting)
 		{
 			gunCharge -= (float)delta;
-			if (_cooldown < 0)
+			if (_cooldown < 0 && gunCharge > 0f)
 			{
 				doShoot();
 				_cooldown = _spawn_speed;
@@ -51,8 +51,8 @@ public partial class InteractRifle : Node
 
 	private void doShoot()
 	{
-		// var projectile = _autoLoad.GimmeAWaterProjectile();
-		var projectile = _autoLoad.GimmeATestProjectile();
+		var projectile = _autoLoad.GimmeAWaterProjectile();
+		// var projectile = _autoLoad.GimmeATestProjectile();
 		projectile.Shoot();
 		var newTransform  = rifle.muzzlePoint.GlobalTransform;
 		projectile.GlobalTransform = newTransform;

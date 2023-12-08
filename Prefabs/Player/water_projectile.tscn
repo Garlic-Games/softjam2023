@@ -26,8 +26,7 @@ lightmap_size_hint = Vector2i(14, 21)
 left_to_right = 0.4
 size = Vector3(0.385, 0.725, 0.33)
 
-[node name="WaterProjectile" type="CharacterBody3D"]
-motion_mode = 1
+[node name="WaterProjectile" type="RigidBody3D"]
 script = ExtResource("1_1gpxo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -37,11 +36,11 @@ shape = SubResource("SphereShape3D_f2qx8")
 mesh = SubResource("SphereMesh_v0mfe")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 200
-lifetime = 2.2
-preprocess = 0.02
-speed_scale = 35.0
+amount = 15
+preprocess = 0.5
+speed_scale = 8.0
 visibility_aabb = AABB(0, 0, 0, 1, 1, 1)
+trail_lifetime = 0.85
 process_material = SubResource("ParticleProcessMaterial_dkad6")
 draw_pass_1 = SubResource("SphereMesh_unpiu")
 

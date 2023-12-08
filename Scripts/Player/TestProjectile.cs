@@ -18,9 +18,6 @@ public partial class TestProjectile : Node3D
 
     public override void _Process(double delta)
     {
-        // var basisX = GlobalTransform.Basis.X.X;
-        // basisX -=  basisX * speed * (float) delta;
-        // GlobalTransform.Basis.X -= GlobalTransform.Basis.X * (float) speed * delta;
         if (status == Status.MOVING)
         {
             Translate(direction.Normalized() * speed * (float) delta);
