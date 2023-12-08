@@ -57,8 +57,4 @@ public partial class HeadRotation : Node3D
         Basis = new Basis(new Vector3(-1, 0, 0), Mathf.DegToRad(xRotation));
         // headTilt.setlocal(new  Vector3(-1, 0, 0), xRad);
     }
-
-    public override void _PhysicsProcess(double delta)
-    {
-    }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="4_t7pus"]
-[ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
+[ext_resource type="PackedScene" uid="uid://4mpxs88w8i4g" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
 
 [node name="WorldTomeu" type="Node3D"]
 

@@ -3,6 +3,9 @@ using System;
 
 public partial class MainPlayerController : CharacterBody3D
 {
+
+	[Export] public Rifle rifle;
+	
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 

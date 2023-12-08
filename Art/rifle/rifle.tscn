@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqxv80i3kbgrs"]
+[gd_scene load_steps=11 format=3 uid="uid://cqxv80i3kbgrs"]
 
 [ext_resource type="Texture2D" uid="uid://cb6kqeslm5cnt" path="res://Art/rifle/Sci-Fi Rifle_BaseColor.png" id="1_k2w0q"]
+[ext_resource type="Script" path="res://Scripts/Rifle/Rifle.cs" id="1_r8ynq"]
 [ext_resource type="Texture2D" uid="uid://c7ovigkoca02q" path="res://Art/rifle/Sci-Fi Rifle_Metallic.png" id="2_3qp2m"]
 [ext_resource type="Texture2D" uid="uid://7q1rktst20w6" path="res://Art/rifle/Sci-Fi Rifle_Emissive.png" id="2_vt8jq"]
 [ext_resource type="Texture2D" uid="uid://byfpw5alcb6h8" path="res://Art/rifle/Sci-Fi Rifle_Normal.png" id="4_rou6v"]
@@ -63,10 +64,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_psa34")
 
-[node name="rifle" type="Node3D"]
+[node name="rifle" type="Node3D" node_paths=PackedStringArray("muzzlePoint")]
+script = ExtResource("1_r8ynq")
+muzzlePoint = NodePath("Muzzle")
 
 [node name="Sci-Fi Rifle" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_g32sy")
 mesh = SubResource("ArrayMesh_e6jld")
 skeleton = NodePath("")
+
+[node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0457439, 3.55686, 51.6066)

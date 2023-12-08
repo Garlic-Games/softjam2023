@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/world_guillem.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ObjectInstanceProviderAutoLoad="*res://Scripts/Autoload/ObjectInstanceProviderAutoLoad.cs"
+
 [dotnet]
 
 project/assembly_name="Softjam 2023"
