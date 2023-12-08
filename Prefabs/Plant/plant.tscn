@@ -81,7 +81,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0119921, -4.29153e-05, -0.0
 collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trunk/Leaf3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_orbvd")
 
 [node name="Leaf5" type="MeshInstance3D" parent="Trunk"]

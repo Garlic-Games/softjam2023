@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du7w0fkl3euh2" path="res://Prefabs/Temperature/temperatura.tscn" id="3_0rimc"]
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="4_t7pus"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
-[ext_resource type="PackedScene" uid="uid://bebiuaebkou21" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
+[ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
 [ext_resource type="PackedScene" uid="uid://bo43j1q4ha1xn" path="res://Prefabs/UI/temperature_bar.tscn" id="7_kop10"]
 
 [node name="WorldTomeu" type="Node3D"]
