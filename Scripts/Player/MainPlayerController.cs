@@ -4,13 +4,22 @@ using System;
 public partial class MainPlayerController : CharacterBody3D
 {
 
-	[Export] public Rifle rifle;
+	public Node3D rifleContainer; 
+	public Rifle rifleMesh;
+	public Node3D aimPoint;
 	
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
+	public override void _Ready()
+	{
+		aimPoint = GetNode<Node3D>("HeadTilt/AimPoint");
+		rifleContainer = GetNode<Node3D>("Visuals/rifle");
+		rifleMesh = rifleContainer.GetChild<Rifle>(0);
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{

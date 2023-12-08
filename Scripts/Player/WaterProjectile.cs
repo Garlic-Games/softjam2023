@@ -14,7 +14,7 @@ public partial class WaterProjectile : RigidBody3D
     private Status status = Status.IDLE;
     private float Speed = 50f;
     private float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle() /4f;
-    private Vector3 direction_forward = new Vector3(0, 0, 1);
+    private Vector3 direction_forward = new Vector3(0, 0, -1);
     private Vector3 direction_down = new Vector3(0, -1, 0);
     
     

@@ -5,7 +5,6 @@ using Softjam2023.Scripts.Autoload;
 public partial class InteractRifle : Node
 {
 	private MainPlayerController player;
-	private Rifle rifle;
 	private ObjectInstanceProviderAutoLoad _autoLoad;
 
 	private float gunCharge = 5; //seconds
@@ -16,7 +15,6 @@ public partial class InteractRifle : Node
 	public override void _Ready()
 	{
 		player = (MainPlayerController) FindParent("ControlablePlayer");
-		rifle = player.rifle;
 		_autoLoad = GetNode<ObjectInstanceProviderAutoLoad>("/root/ObjectInstanceProviderAutoLoad");
 	}
 
@@ -54,8 +52,8 @@ public partial class InteractRifle : Node
 		var projectile = _autoLoad.GimmeAWaterProjectile();
 		// var projectile = _autoLoad.GimmeATestProjectile();
 		projectile.Shoot();
-		var newTransform  = rifle.muzzlePoint.GlobalTransform;
+		var newTransform  = player.rifleMesh.muzzlePoint.GlobalTransform;
 		projectile.GlobalTransform = newTransform;
-		projectile.LookAt(rifle.muzzlePoint.GlobalPosition);
+		projectile.LookAt(player.aimPoint.GlobalPosition);
 	}
 }
