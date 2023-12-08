@@ -15,11 +15,12 @@ albedo_texture = SubResource("NoiseTexture2D_3serx")
 [sub_resource type="PlaneMesh" id="PlaneMesh_4ctu7"]
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_xklc6")
+size = Vector2(10, 10)
 subdivide_width = 5
 subdivide_depth = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ayhq"]
-size = Vector3(20, 0.015, 20)
+size = Vector3(200, 0.015, 200)
 
 [node name="Node3D" type="Node3D"]
 
@@ -33,6 +34,7 @@ mesh = SubResource("PlaneMesh_4ctu7")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, 0, 0)
 shape = SubResource("BoxShape3D_1ayhq")
 
 [node name="ControlablePlayer" parent="." instance=ExtResource("1_lrtr5")]

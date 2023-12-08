@@ -8,14 +8,12 @@ public partial class HeadRotation : Node3D
     private bool mouse_captured;
 
     private MainPlayerController player;
-    private Node3D headTilt;
 
     private float xRotation = 0f;
 
     public override void _Ready()
     {
         player = GetParent<MainPlayerController>();
-        headTilt = GetChild<Node3D>(0);
         capture_mouse();
     }
 
@@ -56,7 +54,7 @@ public partial class HeadRotation : Node3D
 
 
         // RotateObjectLocal(Vector3.Up, yAngles);
-        headTilt.Basis = new Basis(new Vector3(-1, 0, 0), Mathf.DegToRad(xRotation));
+        Basis = new Basis(new Vector3(-1, 0, 0), Mathf.DegToRad(xRotation));
         // headTilt.setlocal(new  Vector3(-1, 0, 0), xRad);
     }
 
