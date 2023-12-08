@@ -3,29 +3,46 @@ using System;
 
 public partial class Hidration : Node3D
 {
-	[Export]
-	private float _currentHumidity;
+    [ExportCategory("Humidity Data")]
+    [Export]
+    private float _humidityTickPerSecond;
+    [Export]
+    private float _currentHumidity;
     [Export]
     private float _growthTreshold;
     [Export]
 	private float _maxHumidity;
 
+    [ExportCategory("PlantGrowth Settings")]
     [Export]
-	private float _minGrowthRatio;
+    private float _minGrowthRatio;
 	[Export]
     private float _maxGrowthRatio;
 
 	private Sizer _sizer;
+    private Plant _plant;
 
 	public override void _Ready()
 	{
 		_sizer = GetNode<Sizer>("../Sizer");
+        _plant = GetParent<Plant>();
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
-		if(_currentHumidity >= _growthTreshold)
+    {
+        DoGrow(delta);
+        ReduceHumidity(delta);
+    }
+
+    private void ReduceHumidity(double delta)
+    {
+        _currentHumidity -= Convert.ToSingle(_humidityTickPerSecond * delta);
+        _plant.EmitHumidity((_currentHumidity / _maxHumidity) * 100);
+    }
+
+    private void DoGrow(double delta)
+    {
+        if (_currentHumidity >= _growthTreshold)
         {
             float currentGrowthRatio = Convert.ToSingle(CalculateGrowthRatio() * delta);
             _sizer.Grow(currentGrowthRatio);
