@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct4cnnddg22cr"]
+
+[ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_8dkoa"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_v0mfe"]
+material = ExtResource("1_8dkoa")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkad6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_unpiu"]
+material = ExtResource("1_8dkoa")
+radius = 0.04
+height = 0.08
+radial_segments = 32
+rings = 16
+
+[node name="WaterProjectile" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_v0mfe")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.22
+visibility_aabb = AABB(0, 0, 0, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_dkad6")
+draw_pass_1 = SubResource("SphereMesh_unpiu")

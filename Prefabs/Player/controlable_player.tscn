@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://pkto7eqenqon"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
-[ext_resource type="Script" path="res://Scripts/GravityAffected.cs" id="1_nnbjt"]
 [ext_resource type="PackedScene" uid="uid://cqxv80i3kbgrs" path="res://Art/rifle/rifle.tscn" id="2_60eft"]
+[ext_resource type="Script" path="res://Scripts/Player/InteractRifle.cs" id="3_80q2m"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadRotation.cs" id="3_nr11c"]
 [ext_resource type="Script" path="res://Scripts/Player/AimRifle.cs" id="3_uafpg"]
 
@@ -15,16 +15,16 @@ radius = 0.25
 height = 0.25
 
 [node name="ControlablePlayer" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00484419, -0.0649334, -0.0131979)
+transform = Transform3D(1, -0.000151426, 0.000116753, 0.000151426, 1, 1.72553e-05, -0.000116753, -1.72553e-05, 1, 0.00484419, -0.0649334, -0.0131979)
 script = ExtResource("1_1erty")
 
 [node name="Scripts" type="Node" parent="."]
 
-[node name="GravityAffected" type="Node" parent="Scripts"]
-script = ExtResource("1_nnbjt")
-
 [node name="AimRifle" type="Node" parent="Scripts"]
 script = ExtResource("3_uafpg")
+
+[node name="InteractRifle" type="Node" parent="Scripts"]
+script = ExtResource("3_80q2m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02933, -0.0390887)
@@ -33,7 +33,7 @@ shape = SubResource("CapsuleShape3D_jee4i")
 [node name="Visuals" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977215, 0)
+transform = Transform3D(0.999788, 0.0162998, -0.0125917, -0.0163232, 0.999865, -0.00175616, 0.0125614, 0.00196132, 0.999919, 0, 0.977215, 0)
 gi_mode = 0
 mesh = SubResource("CapsuleMesh_xihnr")
 
