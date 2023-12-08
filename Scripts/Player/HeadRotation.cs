@@ -17,6 +17,20 @@ public partial class HeadRotation : Node3D
         capture_mouse();
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Input.IsActionJustPressed("ui_text_clear_carets_and_selection"))
+        {
+            if (mouse_captured)
+            {
+                release_mouse();
+            }
+            else
+            {
+                capture_mouse();
+            }
+        }
+    }
 
     public override void _UnhandledInput(InputEvent @event)
     {

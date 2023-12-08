@@ -14,14 +14,10 @@ public partial class AimRifle : Node
         player = (MainPlayerController) FindParent("ControlablePlayer");
         rifle = player.GetNode<Node3D>("Visuals/rifle");
         aimPoint = player.GetNode<Node3D>("HeadTilt/AimPoint");
-        // rifle = (Node3D) player.GetChild<Node3D>("rifle");
-        // aimPoint = (Node3D) player.FindChild("AimPoint");
-
-        GD.Print(rifle);
+        
     }
     public override void _PhysicsProcess(double delta)
     {
         rifle.LookAt(aimPoint.GlobalPosition);
-        // AimTo/
     }
 }

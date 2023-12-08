@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4svigjgd5wlv"]
+[gd_scene load_steps=3 format=3 uid="uid://ctmakpu2wqv6q"]
 
-[ext_resource type="ArrayMesh" uid="uid://cdwf87ck8pxap" path="res://Art/bird/bird_scene.res" id="1_m4bsw"]
+[ext_resource type="Script" path="res://Scripts/Bird/Bird.cs" id="1_otqqf"]
+[ext_resource type="PackedScene" uid="uid://b4svigjgd5wlv" path="res://Prefabs/Bird/BirdMesh.tscn" id="2_2h0ve"]
 
 [node name="Bird" type="Node3D"]
+script = ExtResource("1_otqqf")
 
-[node name="BirdMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("1_m4bsw")
+[node name="BirdMesh" parent="." instance=ExtResource("2_2h0ve")]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)

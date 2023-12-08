@@ -9,12 +9,12 @@ public partial class ObjectInstanceProviderAutoLoad : Node
 
     public override void _Ready()
     {
-        string path = "res://Prefabs/Player/water_projectile.tscn";
-
-        if (ResourceLoader.Load(path) is PackedScene projectileResource)
-        {
-            var projectile = projectileResource.Instantiate();
-        }
+        // string path = "res://Prefabs/Player/water_projectile.tscn";
+        //
+        // if (ResourceLoader.Load(path) is PackedScene projectileResource)
+        // {
+        //     var projectile = projectileResource.Instantiate();
+        // }
         
         // var scene = scene_resource.instance()
         // parent_node.add_child(scene)
