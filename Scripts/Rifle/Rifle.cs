@@ -13,7 +13,7 @@ public partial class Rifle : Node3D
 	private Material _defaultGunMaterial;
 	private Material _defaultGunMaterialNoShine;
 
-	private const float ShineInterval = 0.3f;
+	private const float ShineInterval = 0.15f;
 	private float _shineIntervalCount = 0;
 	private bool _shining = true;
 	
@@ -33,13 +33,13 @@ public partial class Rifle : Node3D
 
 			if (_shineIntervalCount > ShineInterval) {
 				_shineIntervalCount = 0f;
-				_shining = !_shining;
-				ShineChange(_shining);
+				ShineChange(!_shining);
 			}
 		}
 	}
 
 	private void ShineChange(bool shine) {
+		_shining = shine;
 		if (shine) {
 			rilfeMesh.SetSurfaceOverrideMaterial(0, _defaultGunMaterial);
 		} else {
