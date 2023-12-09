@@ -56,7 +56,7 @@ mesh = SubResource("CapsuleMesh_xihnr")
 transform = Transform3D(1, 6.48859e-12, 0, 4.37961e-12, 1, -1.09139e-11, 0, 0, 1, 0.333104, 1.33147, 6.27525e-06)
 
 [node name="RifleMesh" parent="Visuals/rifle" instance=ExtResource("2_60eft")]
-transform = Transform3D(-0.025, 3.44121e-13, -2.18552e-09, -1.01672e-13, 0.025, 0, 2.18506e-09, -5.68434e-14, -0.025, 0.000120759, 1.78814e-05, -1.03468)
+transform = Transform3D(-0.025, 5.71498e-13, -2.18552e-09, -1.01648e-13, 0.025, 2.84217e-14, 2.18483e-09, -8.52651e-14, -0.025, 0.000120729, 1.78814e-05, -1.03468)
 
 [node name="HeadTilt" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76052, 0)
