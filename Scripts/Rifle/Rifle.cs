@@ -47,10 +47,8 @@ public partial class Rifle : Node3D
 		}
 	}
 
-	public bool ShouldShine {
-		get {
-			return _shouldShine;
-		}
+	public bool shouldShine {
+		get => _shouldShine;
 		set {
 			if (value != _shouldShine) {
 				ShineChange(!value);

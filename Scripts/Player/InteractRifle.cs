@@ -61,7 +61,7 @@ public partial class InteractRifle : Node {
         Dictionary result = spaceState.IntersectRay(query);
 
         canReload = CollidedWithWaterSource(result);
-        player.rifleMesh.ShouldShine = canReload;
+        player.rifleMesh.shouldShine = canReload;
     }
 
     private bool CollidedWithWaterSource(Dictionary result) {
