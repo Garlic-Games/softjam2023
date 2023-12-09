@@ -1,28 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqxv80i3kbgrs"]
+[gd_scene load_steps=6 format=3 uid="uid://cqxv80i3kbgrs"]
 
-[ext_resource type="Texture2D" uid="uid://cb6kqeslm5cnt" path="res://Art/rifle/Sci-Fi Rifle_BaseColor.png" id="1_k2w0q"]
 [ext_resource type="Script" path="res://Scripts/Rifle/Rifle.cs" id="1_r8ynq"]
-[ext_resource type="Texture2D" uid="uid://c7ovigkoca02q" path="res://Art/rifle/Sci-Fi Rifle_Metallic.png" id="2_3qp2m"]
-[ext_resource type="Texture2D" uid="uid://7q1rktst20w6" path="res://Art/rifle/Sci-Fi Rifle_Emissive.png" id="2_vt8jq"]
-[ext_resource type="Texture2D" uid="uid://byfpw5alcb6h8" path="res://Art/rifle/Sci-Fi Rifle_Normal.png" id="4_rou6v"]
-[ext_resource type="Texture2D" uid="uid://l2xevb65w1pt" path="res://Art/rifle/Sci-Fi Rifle_Roughness.png" id="5_dv7rb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g32sy"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("1_k2w0q")
-metallic = 1.0
-metallic_specular = 0.55
-metallic_texture = ExtResource("2_3qp2m")
-metallic_texture_channel = 4
-roughness_texture = ExtResource("5_dv7rb")
-roughness_texture_channel = 4
-emission_enabled = true
-emission_energy_multiplier = 2.08
-emission_texture = ExtResource("2_vt8jq")
-normal_enabled = true
-normal_scale = 4.16
-normal_texture = ExtResource("4_rou6v")
+[ext_resource type="Material" uid="uid://bm8l6jpibjq2y" path="res://Art/rifle/Default_Material.tres" id="2_kwt2q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a22j7"]
 resource_name = "Sci-Fi Rifle"
@@ -64,16 +43,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_psa34")
 
-[node name="rifle" type="Node3D" node_paths=PackedStringArray("barrelEndPoint", "barrelStartPoint")]
+[node name="rifle" type="Node3D" node_paths=PackedStringArray("barrelEndPoint", "barrelStartPoint", "rilfeMesh")]
 script = ExtResource("1_r8ynq")
 barrelEndPoint = NodePath("BarrelEndPoint")
 barrelStartPoint = NodePath("BarrelStartPoint")
+rilfeMesh = NodePath("Sci-Fi Rifle")
 
 [node name="Sci-Fi Rifle" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_g32sy")
 mesh = SubResource("ArrayMesh_e6jld")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kwt2q")
 
 [node name="BarrelEndPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0457439, 3.55686, 51.6066)
