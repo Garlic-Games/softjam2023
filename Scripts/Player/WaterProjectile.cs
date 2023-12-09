@@ -11,11 +11,11 @@ public partial class WaterProjectile : RigidBody3D
         MOVING
     };
 
-    private const float TimeToLive = 2f; 
+    private const float TimeToLive = 7f; 
     
     private Status status = Status.IDLE;
     private float Speed = 50f;
-    private float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle() /4f;
+    private float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
     private Vector3 direction_forward = new Vector3(0, 0, -1);
     private Vector3 direction_down = new Vector3(0, -1, 0);
 
@@ -29,20 +29,20 @@ public partial class WaterProjectile : RigidBody3D
         }
     }
 
+    
     public override void _PhysicsProcess(double delta)
     {
 
-        if (status == Status.MOVING) {
-            _lifeSpan += (float) delta;
-            Translate(direction_forward.Normalized() * Speed * (float) delta);
-            Translate(direction_down * gravity * (float) delta);
-        }
+
 
     }
 
     public void Shoot()
     {
         status = Status.MOVING;
+        //Thanks to: https://forum.godotengine.org/t/godot-3-rotation-doesnt-effect-axis-for-velocity/29980
+        LinearVelocity = GlobalTransform.Basis.Orthonormalized() * direction_forward * Speed;
+
     }
     
     

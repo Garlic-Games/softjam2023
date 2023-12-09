@@ -30,6 +30,8 @@ left_to_right = 0.4
 size = Vector3(0.385, 0.725, 0.33)
 
 [node name="WaterProjectile" type="RigidBody3D"]
+collision_mask = 64
+mass = 0.2
 script = ExtResource("1_1gpxo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

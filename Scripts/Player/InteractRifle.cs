@@ -80,9 +80,9 @@ public partial class InteractRifle : Node {
     private void doShoot() {
         var projectile = _autoLoad.GimmeAWaterProjectile();
         // var projectile = _autoLoad.GimmeATestProjectile();
-        projectile.Shoot();
         var newTransform = player.rifleMesh.barrelEndPoint.GlobalTransform;
         projectile.GlobalTransform = newTransform;
         projectile.LookAt(player.aimPoint.GlobalPosition);
+        projectile.Shoot();
     }
 }
