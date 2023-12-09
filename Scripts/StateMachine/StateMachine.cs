@@ -11,7 +11,7 @@ public partial class StateMachine : Node
     private Temperatura _temperatura;
 
     [Signal]
-    public delegate void StateChangedEventHandler(int state);
+    public delegate void StateChangedEventHandler(int state, int previousState);
 
     public GameStates State { get; private set; } = GameStates.GameOver;
 
@@ -44,31 +44,9 @@ public partial class StateMachine : Node
     public void ChangeState(GameStates newState)
     {
         if (State == newState) return;
-
-        switch (newState)
-        {
-            case GameStates.Intro:
-                MusicManager.Instance.PlayIntro();
-                break;
-            case GameStates.Calm:
-                MusicManager.Instance.PlayCalmLoop();
-                break;
-            case GameStates.Warning:
-                if (State == GameStates.Danger)
-                {
-                    MusicManager.Instance.PlayBackFromDanger();
-                }
-                else
-                {
-                    MusicManager.Instance.PlayWarning();
-                }
-                break;
-            case GameStates.Danger:
-                MusicManager.Instance.PlayDanger();
-                break;
-        }
+        GameStates oldState = newState;
         State = newState;
 
-        EmitSignal(SignalName.StateChanged, (int)newState);
+        EmitSignal(SignalName.StateChanged, (int)newState, (int)oldState);
     }
 }

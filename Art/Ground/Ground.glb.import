@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dium0k4rpo15f"
-path="res://.godot/imported/Ground.glb-7f23bbaa8a0d3467cddea10e574e0978.scn"
+path="res://.godot/imported/ground.glb-d91dd787e5bad57972acd8e8532c058b.scn"
 
 [deps]
 
-source_file="res://Art/Ground/Ground.glb"
-dest_files=["res://.godot/imported/Ground.glb-7f23bbaa8a0d3467cddea10e574e0978.scn"]
+source_file="res://Art/Ground/ground.glb"
+dest_files=["res://.godot/imported/ground.glb-d91dd787e5bad57972acd8e8532c058b.scn"]
 
 [params]
 
@@ -31,7 +31,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "meshes": {
-"Ground_Plane_002": {
+"ground_Plane": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -39,17 +39,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://Art/Ground/Map.res"
-},
-"Ground_Plane_003": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
-"save_to_file/make_streamable": "",
-"save_to_file/path": "res://Art/Ground/Ground.res"
+"save_to_file/path": "res://Art/Ground/ground_Plane.res"
 }
 }
 }

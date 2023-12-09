@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=10 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
 [ext_resource type="PackedScene" uid="uid://bo43j1q4ha1xn" path="res://Prefabs/UI/temperature_bar.tscn" id="7_kop10"]
 [ext_resource type="PackedScene" uid="uid://cynftkksee0vb" path="res://Prefabs/System/state_machine.tscn" id="8_j78m8"]
+[ext_resource type="PackedScene" uid="uid://cbkb6g1xeyluk" path="res://Prefabs/System/music_box.tscn" id="9_454rb"]
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -22,10 +23,10 @@ transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555
 _tempAugment = 0.001
 
 [node name="Plant" parent="World" instance=ExtResource("2_yufc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24361, -170.772, 1.21227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24361, 35.774, 1.21227)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.999148, 3.11225e-10, 0.0412654, 0.0236547, 0.819392, 0.572745, -0.0338125, 0.573233, -0.818694, 0, 7.07003, 0)
+transform = Transform3D(-0.999148, 3.19492e-08, 0.0412654, 0.0236547, 0.819392, 0.572745, -0.0338125, 0.573233, -0.818694, 0, 7.07003, 0)
 light_energy = 2.5
 light_indirect_energy = 2.0
 
@@ -43,3 +44,6 @@ _temperatura = NodePath("../../World/Temperatura")
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_plant", "_temperatura") instance=ExtResource("8_j78m8")]
 _plant = NodePath("../World/Plant")
 _temperatura = NodePath("../World/Temperatura")
+
+[node name="MusicBox" parent="." node_paths=PackedStringArray("_stateMachine") instance=ExtResource("9_454rb")]
+_stateMachine = NodePath("../StateMachine")
