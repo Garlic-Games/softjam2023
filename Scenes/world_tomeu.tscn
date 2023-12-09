@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=17 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
 [ext_resource type="PackedScene" uid="uid://ctmakpu2wqv6q" path="res://Prefabs/Bird/Bird.tscn" id="6_f0lc5"]
 [ext_resource type="PackedScene" uid="uid://bo43j1q4ha1xn" path="res://Prefabs/UI/temperature_bar.tscn" id="7_kop10"]
-[ext_resource type="PackedScene" path="res://Prefabs/BirdSky.tscn" id="7_uig2l"]
+[ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="7_uig2l"]
 [ext_resource type="PackedScene" uid="uid://cynftkksee0vb" path="res://Prefabs/System/state_machine.tscn" id="8_j78m8"]
 [ext_resource type="Texture2D" uid="uid://b351kdxq6t4b6" path="res://Art/UI/humidityBar/green.png" id="8_r31r0"]
 [ext_resource type="Script" path="res://Scripts/UI/GrowthBar.cs" id="9_sd6gy"]
 [ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="10_op6nb"]
 [ext_resource type="PackedScene" uid="uid://bwxuxvqrq6e7q" path="res://Prefabs/System/music_game_state_manager.tscn" id="11_nj761"]
 [ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="11_ph2xv"]
+[ext_resource type="Script" path="res://Scripts/GameOver/GameOverCanvas.cs" id="12_y8w2n"]
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -22,10 +23,20 @@
 
 [node name="Ground" parent="World" instance=ExtResource("1_s8jru")]
 
+[node name="WaterPond2" parent="World" instance=ExtResource("4_wor1o")]
+transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, 26.7001, -13.6502, 11.3161)
+
+[node name="WaterPond4" parent="World" instance=ExtResource("4_wor1o")]
+transform = Transform3D(0.992891, 0, 0.119028, 0, 1, 0, -0.119028, 0, 0.992891, 50.6741, -10.1689, 59.7572)
+
+[node name="WaterPond3" parent="World" instance=ExtResource("4_wor1o")]
+transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, -16.1389, -11.5588, -54.1767)
+
 [node name="WaterPond" parent="World" instance=ExtResource("4_wor1o")]
-transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -31.1859, -9.70509, 55.2603)
+transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -32.274, -9.99263, 55.2603)
 
 [node name="Temperatura" parent="World" instance=ExtResource("3_0rimc")]
+_currentTemperature = 0.0
 _tempAugment = 0.001
 
 [node name="Plant" parent="World" instance=ExtResource("2_yufc4")]
@@ -39,20 +50,20 @@ light_indirect_energy = 2.0
 [node name="ControlablePlayer" parent="." instance=ExtResource("4_t7pus")]
 transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 13.2405, 3.44878, -8.45545)
 
+[node name="BirdSky" parent="." instance=ExtResource("7_uig2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.1353, 0)
+
+[node name="Bird4" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("6_f0lc5")]
+BirdSky = NodePath("../BirdSky")
+
 [node name="Bird3" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("6_f0lc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.5717, 8.1417, 73.4285)
 BirdSky = NodePath("../BirdSky")
 
 [node name="Bird2" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("6_f0lc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0478, 5.4278, 48.9523)
 BirdSky = NodePath("../BirdSky")
 
 [node name="Bird" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("6_f0lc5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5239, 2.7139, 24.4762)
 BirdSky = NodePath("../BirdSky")
-
-[node name="BirdSky" parent="." instance=ExtResource("7_uig2l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5239, 2.7139, 24.4762)
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
@@ -79,7 +90,10 @@ texture_progress = ExtResource("8_r31r0")
 script = ExtResource("9_sd6gy")
 _plant = NodePath("../../World/Plant")
 
-[node name="GameOverCanvas" type="CanvasLayer" parent="."]
+[node name="GameOverCanvas" type="CanvasLayer" parent="." node_paths=PackedStringArray("_machine")]
+visible = false
+script = ExtResource("12_y8w2n")
+_machine = NodePath("../StateMachine")
 
 [node name="GameOverScreen" type="Control" parent="GameOverCanvas"]
 layout_mode = 3
@@ -140,9 +154,9 @@ offset_right = 750.0
 offset_bottom = 506.0
 text = "Press Here to try again"
 
+[node name="MusicGameStateManager" parent="." node_paths=PackedStringArray("_stateMachine") instance=ExtResource("11_nj761")]
+_stateMachine = NodePath("../StateMachine")
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_plant", "_temperatura") instance=ExtResource("8_j78m8")]
 _plant = NodePath("../World/Plant")
 _temperatura = NodePath("../World/Temperatura")
-
-[node name="MusicGameStateManager" parent="." node_paths=PackedStringArray("_stateMachine") instance=ExtResource("11_nj761")]
-_stateMachine = NodePath("../StateMachine")
