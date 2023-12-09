@@ -24,13 +24,13 @@
 [node name="Ground" parent="World" instance=ExtResource("1_s8jru")]
 
 [node name="WaterPond2" parent="World" instance=ExtResource("4_wor1o")]
-transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, 26.7001, -13.6502, 11.3161)
+transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, 26.7001, -13.6502, 10.7092)
 
 [node name="WaterPond4" parent="World" instance=ExtResource("4_wor1o")]
 transform = Transform3D(0.992891, 0, 0.119028, 0, 1, 0, -0.119028, 0, 0.992891, 50.6741, -10.1689, 59.7572)
 
 [node name="WaterPond3" parent="World" instance=ExtResource("4_wor1o")]
-transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, -16.1389, -11.5588, -54.1767)
+transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221, -18.8443, -11.7293, -54.1767)
 
 [node name="WaterPond" parent="World" instance=ExtResource("4_wor1o")]
 transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -32.274, -9.99263, 55.2603)
