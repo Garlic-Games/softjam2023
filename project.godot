@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ObjectInstanceProviderAutoLoad="*res://Scripts/Autoload/ObjectInstanceProviderAutoLoad.cs"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 MusicManager="*res://Scripts/Autoload/MusicManager.cs"
+DrawLine3d="*res://ExternalAssets/Godot-3D-Lines/DrawLine3D.gd"
 
 [dotnet]
 
