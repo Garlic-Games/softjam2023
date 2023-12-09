@@ -9,7 +9,7 @@ public partial class Bird : Node3D
 	private Node3D seekNode;
 	
 	private float Speed = 5f;
-	private Vector3 direction_forward = new Vector3(0, 0, 1);
+	private Vector3 direction_forward = new Vector3(0, 0, -1);
 	private float lastDistance = 99999f;
 	private bool moving = false;
 	
