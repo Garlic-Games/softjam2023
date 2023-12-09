@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqxv80i3kbgrs"]
+[gd_scene load_steps=3 format=3 uid="uid://cqxv80i3kbgrs"]
 
 [ext_resource type="Script" path="res://Scripts/Rifle/Rifle.cs" id="1_r8ynq"]
 [ext_resource type="ArrayMesh" uid="uid://cv2ps6eu5xq6v" path="res://Art/rifle/imported_rifle.res" id="2_3ffl5"]
-[ext_resource type="Material" uid="uid://bm8l6jpibjq2y" path="res://Art/rifle/Default_Material.tres" id="2_kwt2q"]
 
 [node name="rifle" type="Node3D" node_paths=PackedStringArray("barrelEndPoint", "barrelStartPoint", "rilfeMesh")]
 script = ExtResource("1_r8ynq")
@@ -14,7 +13,6 @@ rilfeMesh = NodePath("Sci-Fi Rifle")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = ExtResource("2_3ffl5")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_kwt2q")
 
 [node name="BarrelEndPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0457439, 3.55686, 51.6066)

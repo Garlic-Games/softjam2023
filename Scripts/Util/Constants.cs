@@ -8,5 +8,6 @@ public class Constants {
         public const int Capa4 = 4;
         public const int Regions = 5;
         public const int WaterSource = 6;
+        public const int WaterAffected = 7;
     }
 }

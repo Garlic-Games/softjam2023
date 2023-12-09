@@ -90,6 +90,7 @@ player_sprint={
 3d_physics/layer_3="terrain"
 3d_physics/layer_5="regions"
 3d_physics/layer_6="WaterSource"
+3d_physics/layer_7="WaterAffected"
 
 [rendering]
 

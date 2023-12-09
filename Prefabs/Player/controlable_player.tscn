@@ -64,6 +64,7 @@ script = ExtResource("3_nr11c")
 
 [node name="Camera3D" type="Camera3D" parent="HeadTilt"]
 environment = SubResource("Environment_uvxv8")
+current = true
 
 [node name="AimPoint" type="Node3D" parent="HeadTilt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
