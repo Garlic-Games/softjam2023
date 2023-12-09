@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=10 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="2_pebe0"]
 [ext_resource type="PackedScene" uid="uid://ctmakpu2wqv6q" path="res://Prefabs/Bird/Bird.tscn" id="3_1fs37"]
+[ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_p3uih"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uylvt"]
 noise_type = 2
@@ -58,3 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 [node name="Bird" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.1025, 0)
 BirdSky = NodePath("../BirdSky")
+
+[node name="WaterPond" parent="." instance=ExtResource("4_p3uih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811942, -9.38891, 13.9362)

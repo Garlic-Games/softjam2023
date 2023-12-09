@@ -9,7 +9,7 @@ size = Vector3(100, 25, 100)
 script = ExtResource("1_w01xp")
 pathPointsNode = NodePath("NavigationBox/PathPoints")
 
-[node name="NavigationBox" type="StaticBody3D" parent="."]
+[node name="NavigationBox" type="Area3D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
