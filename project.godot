@@ -85,6 +85,8 @@ player_reload={
 3d_physics/layer_1="default"
 3d_physics/layer_2="player"
 3d_physics/layer_3="terrain"
+3d_physics/layer_5="regions"
+3d_physics/layer_6="WaterSource"
 
 [rendering]
 

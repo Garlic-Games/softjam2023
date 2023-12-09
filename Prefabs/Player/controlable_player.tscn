@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pkto7eqenqon"]
+[gd_scene load_steps=12 format=3 uid="uid://pkto7eqenqon"]
 
 [ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
 [ext_resource type="PackedScene" uid="uid://cqxv80i3kbgrs" path="res://Art/rifle/rifle.tscn" id="2_60eft"]
@@ -20,8 +20,11 @@ fog_enabled = true
 fog_light_color = Color(0.341176, 0.6, 0.619608, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kbnlc"]
-radius = 0.25
+radius = 0.125
 height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeatl"]
+albedo_color = Color(0, 0, 1, 1)
 
 [node name="ControlablePlayer" type="CharacterBody3D"]
 transform = Transform3D(1, -0.000151426, 0.000116753, 0.000151426, 1, 1.72553e-05, -0.000116753, -1.72553e-05, 1, 0.00484419, -0.0649334, -0.0131979)
@@ -50,10 +53,10 @@ gi_mode = 0
 mesh = SubResource("CapsuleMesh_xihnr")
 
 [node name="rifle" type="Node3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271, 1.388, -0.961)
+transform = Transform3D(1, 6.48859e-12, 0, 4.37961e-12, 1, -1.09139e-11, 0, 0, 1, 0.333104, 1.33147, 6.27525e-06)
 
 [node name="RifleMesh" parent="Visuals/rifle" instance=ExtResource("2_60eft")]
-transform = Transform3D(-0.025, 0, -2.18557e-09, 0, 0.025, 0, 2.18557e-09, 0, -0.025, 0, 0, 0)
+transform = Transform3D(-0.025, 3.44121e-13, -2.18552e-09, -1.01672e-13, 0.025, 0, 2.18506e-09, -5.68434e-14, -0.025, 0.000120759, 1.78814e-05, -1.03468)
 
 [node name="HeadTilt" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76052, 0)
@@ -68,3 +71,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HeadTilt/AimPoint"]
 mesh = SubResource("SphereMesh_kbnlc")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_aeatl")

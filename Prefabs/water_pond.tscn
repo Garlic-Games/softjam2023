@@ -21,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244312, -0.328131, 2.04347)
 mesh = SubResource("CylinderMesh_aelrt")
 
 [node name="Area3D" type="Area3D" parent="water"]
+collision_layer = 33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="water/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391907, 0, 0.0289917)
