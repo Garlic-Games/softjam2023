@@ -12,8 +12,10 @@ public partial class MusicManager : Node
 	private AudioStream _dangerMusic = ResourceLoader.Load<AudioStream>("res://Sounds/Song/Tema Loop Tension 2.wav");
 	[Export]
 	private AudioStream _transitionMusic = ResourceLoader.Load<AudioStream>("res://Sounds/Song/tension 1 sin transicion.wav");
+    [Export]
+    private AudioStream _gameOverMusic = ResourceLoader.Load<AudioStream>("res://Sounds/Song/game over.wav");
 
-	[Export]
+    [Export]
     private AudioStream[] _footsteps;
 
     public static MusicManager Instance { get; private set; }
@@ -46,5 +48,10 @@ public partial class MusicManager : Node
     public void PlayDanger()
     {
         SoundManager.PlayMusic(_dangerMusic, 2);
+    }
+
+    internal void PlayGameOver()
+    {
+        SoundManager.PlayMusic(_gameOverMusic);
     }
 }

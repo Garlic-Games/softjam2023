@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bf76smxecy8y8"]
+
+[ext_resource type="FontFile" uid="uid://dnnma5nav1dgl" path="res://Art/Fonts/Baskic8.otf" id="1_1xbnv"]
+
+[resource]
+default_font = ExtResource("1_1xbnv")
+default_font_size = 12

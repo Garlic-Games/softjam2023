@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwxuxvqrq6e7q"]
+
+[ext_resource type="Script" path="res://Scripts/System/MusicGameStateManager.cs" id="1_c68vn"]
+
+[node name="MusicGameStateManager" type="Node"]
+script = ExtResource("1_c68vn")

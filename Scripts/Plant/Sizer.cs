@@ -1,18 +1,33 @@
 using Godot;
-using System;
 
 public partial class Sizer : Node3D
 {
-	private Node3D _parent;
 
-    // Called when the node enters the scene tree for the first time.
+    private Plant _parent;
+
+    [Export]
+    private float _sizeGrowth = 0.1f;
+    [Export]
+    private float _currentSize = 0;
+    [Export]
+    private float _maxSize = 10;
+
     public override void _Ready()
 	{
-		_parent = GetParent<Node3D>();
+		_parent = GetNode<Plant>("../..");
 	}
 
     public void Grow(float growthRate)
     {
+        if(_currentSize >= _maxSize)
+        {
+            _currentSize = _maxSize;
+            _parent.EmitMaxSize();
+            return;
+        }
+        _currentSize += _sizeGrowth * growthRate;
+
         _parent.Scale += Vector3.Up * growthRate;
+        _parent.EmitGrowth((_currentSize / _maxSize) * 100);
     }
 }

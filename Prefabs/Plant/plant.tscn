@@ -29,6 +29,7 @@ script = ExtResource("3_ven8u")
 
 [node name="Sizer" type="Node3D" parent="Trunk"]
 script = ExtResource("4_8cunl")
+_sizeGrowth = 1.0
 
 [node name="Hidration" type="Node3D" parent="Trunk"]
 script = ExtResource("5_0v0sr")

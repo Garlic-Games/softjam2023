@@ -38,6 +38,7 @@ public partial class Hidration : Node3D
     {
         if(_currentHumidity <= 0)
         {
+            _plant.EmitPlantDead();
             _currentHumidity = 0;
             return;
         }

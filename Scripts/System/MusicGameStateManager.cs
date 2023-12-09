@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MusicBox : Node
+public partial class MusicGameStateManager : Node
 {
 	[Export]
 	private StateMachine _stateMachine;
@@ -35,6 +35,9 @@ public partial class MusicBox : Node
                 break;
             case GameStates.Danger:
                 MusicManager.Instance.PlayDanger();
+                break;
+            case GameStates.GameOver:
+                MusicManager.Instance.PlayGameOver();
                 break;
         }
     }

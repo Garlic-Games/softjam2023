@@ -24,6 +24,10 @@ public partial class StateMachine : Node
             _temperatura.WarningTemperatureReached += BeNervous;
             _temperatura.DangerTemperatureReached += BeFreakedOut;
         }
+        if(_plant != null)
+        {
+            _plant.PlantDead += LooseGame;
+        }
     }
 
     private void BeFreakedOut()
@@ -39,6 +43,11 @@ public partial class StateMachine : Node
     private void BeCalm()
     {
         ChangeState(GameStates.Calm);
+    }
+
+    private void LooseGame()
+    {
+        ChangeState(GameStates.GameOver);
     }
 
     public void ChangeState(GameStates newState)
