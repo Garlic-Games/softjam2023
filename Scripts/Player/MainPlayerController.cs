@@ -7,6 +7,7 @@ public partial class MainPlayerController : CharacterBody3D
 	public Node3D rifleContainer; 
 	public Rifle rifleMesh;
 	public Node3D aimPoint;
+	public Camera3D camera;
 	
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
@@ -18,6 +19,7 @@ public partial class MainPlayerController : CharacterBody3D
 	{
 		aimPoint = GetNode<Node3D>("HeadTilt/AimPoint");
 		rifleContainer = GetNode<Node3D>("Visuals/rifle");
+		camera = GetNode<Camera3D>("HeadTilt/Camera3D");
 		rifleMesh = rifleContainer.GetChild<Rifle>(0);
 	}
 

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class HeadRotation : Node3D
 {
-    [Export] private float camera_sens = 0.7f;
+    [Export] private float camera_sens = 0.2f;
 
     private Vector2 look_dir;
     private bool mouse_captured;

@@ -64,9 +64,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_psa34")
 
-[node name="rifle" type="Node3D" node_paths=PackedStringArray("muzzlePoint")]
+[node name="rifle" type="Node3D" node_paths=PackedStringArray("barrelEndPoint", "barrelStartPoint")]
 script = ExtResource("1_r8ynq")
-muzzlePoint = NodePath("Muzzle")
+barrelEndPoint = NodePath("BarrelEndPoint")
+barrelStartPoint = NodePath("BarrelStartPoint")
 
 [node name="Sci-Fi Rifle" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -74,5 +75,11 @@ material_override = SubResource("StandardMaterial3D_g32sy")
 mesh = SubResource("ArrayMesh_e6jld")
 skeleton = NodePath("")
 
-[node name="Muzzle" type="Node3D" parent="."]
+[node name="BarrelEndPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0457439, 3.55686, 51.6066)
+
+[node name="Shoulder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046, -0.0576708, -32.7562)
+
+[node name="BarrelStartPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046, 3.557, -35.209)

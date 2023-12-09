@@ -3,7 +3,8 @@ using System;
 
 public partial class Rifle : Node3D
 {
-	[Export] public Node3D muzzlePoint;
+	[Export] public Node3D barrelEndPoint;
+	[Export] public Node3D barrelStartPoint;
 	
 	public override void _Ready()
 	{
