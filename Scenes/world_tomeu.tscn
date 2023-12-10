@@ -79,3 +79,5 @@ _machine = NodePath("../StateMachine")
 
 [node name="GameOverCanvas" parent="." node_paths=PackedStringArray("_machine") instance=ExtResource("10_5yj8x")]
 _machine = NodePath("../StateMachine")
+
+[connection signal="StateChanged" from="StateMachine" to="ControlablePlayer" method="GameStateChange"]
