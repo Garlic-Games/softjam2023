@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ctmakpu2wqv6q"]
 
-[ext_resource type="Script" path="res://Scripts/Bird/Bird.cs" id="1_otqqf"]
+[ext_resource type="Script" path="res://Scripts/Entity/Bird/Bird.cs" id="1_otqqf"]
 [ext_resource type="PackedScene" uid="uid://b4svigjgd5wlv" path="res://Prefabs/Bird/BirdMesh.tscn" id="2_2h0ve"]
 [ext_resource type="Script" path="res://Scripts/Collider/WaterAffectedCollider.cs" id="3_7yp1y"]
 [ext_resource type="Material" uid="uid://dnx86sil5qx8q" path="res://Art/Materials/FireMaterial.tres" id="4_bevk3"]

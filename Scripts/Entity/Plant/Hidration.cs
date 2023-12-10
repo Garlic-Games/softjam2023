@@ -21,14 +21,17 @@ public partial class Hidration : Node3D
 
 	private Sizer _sizer;
     private Plant _plant;
+    private WaterAffectedCollider _collider;
 
 	public override void _Ready()
 	{
 		_sizer = GetNode<Sizer>("../Sizer");
         _plant = GetNode<Plant>("../..");
+        // _collider = GetNode<WaterAffectedCollider>("../Trunk/StaticBody3D");
     }
 
-	public override void _Process(double delta)
+
+    public override void _PhysicsProcess(double delta)
     {
         DoGrow(delta);
         ReduceHumidity(delta);

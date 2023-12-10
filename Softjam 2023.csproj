@@ -10,5 +10,6 @@
     <Folder Include="Prefabs\Plant\" />
     <Folder Include="Prefabs\Player\" />
     <Folder Include="Scenes\" />
+    <Folder Include="Scripts\Entity\" />
   </ItemGroup>
 </Project>

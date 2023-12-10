@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnknb7okgo1mu"]
 
-[ext_resource type="Script" path="res://Scripts/Bird/BirdSky.cs" id="1_w01xp"]
+[ext_resource type="Script" path="res://Scripts/Entity/Bird/BirdSky.cs" id="1_w01xp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fx5pa"]
 size = Vector3(100, 25, 100)

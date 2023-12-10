@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://pkto7eqenqon"]
 
-[ext_resource type="Script" path="res://Scripts/Player/MainPlayerController.cs" id="1_1erty"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/MainPlayerController.cs" id="1_1erty"]
 [ext_resource type="PackedScene" uid="uid://cqxv80i3kbgrs" path="res://Art/rifle/rifle.tscn" id="2_60eft"]
-[ext_resource type="Script" path="res://Scripts/Player/InteractRifle.cs" id="3_80q2m"]
-[ext_resource type="Script" path="res://Scripts/Player/HeadRotation.cs" id="3_nr11c"]
-[ext_resource type="Script" path="res://Scripts/Player/AimRifle.cs" id="3_uafpg"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/InteractRifle.cs" id="3_80q2m"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/HeadRotation.cs" id="3_nr11c"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/AimRifle.cs" id="3_uafpg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jee4i"]
 

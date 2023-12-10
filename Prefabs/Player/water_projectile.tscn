@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ct4cnnddg22cr"]
 
-[ext_resource type="Script" path="res://Scripts/Player/WaterProjectile.cs" id="1_1gpxo"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/WaterProjectile.cs" id="1_1gpxo"]
 [ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_8dkoa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2qx8"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqxv80i3kbgrs"]
 
-[ext_resource type="Script" path="res://Scripts/Rifle/Rifle.cs" id="1_r8ynq"]
+[ext_resource type="Script" path="res://Scripts/Entity/Rifle/Rifle.cs" id="1_r8ynq"]
 [ext_resource type="ArrayMesh" uid="uid://cv2ps6eu5xq6v" path="res://Art/rifle/imported_rifle.res" id="2_3ffl5"]
 
 [node name="rifle" type="Node3D" node_paths=PackedStringArray("barrelEndPoint", "barrelStartPoint", "rilfeMesh")]
