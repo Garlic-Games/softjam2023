@@ -17,8 +17,6 @@ public partial class MainPlayerController : CharacterBody3D
 	public Camera3D camera;
     private PlayerGameStateManager _gameStateManager;
 
-    public const float Speed = 5.0f;
-	public const float SprintSpeed = 7.0f;
     public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.

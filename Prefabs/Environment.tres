@@ -1,0 +1,17 @@
+[gd_resource type="Environment" format=3 uid="uid://b6p5vu7bp41rq"]
+
+[resource]
+background_color = Color(0.905882, 0.494118, 0.329412, 1)
+ambient_light_source = 3
+ambient_light_color = Color(1, 0.258824, 0.552941, 0.764706)
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 1
+glow_enabled = true
+fog_light_color = Color(0.341176, 0.6, 0.619608, 1)
+fog_height = 50.0
+fog_height_density = 0.01
+volumetric_fog_albedo = Color(0, 1, 1, 1)
+volumetric_fog_emission = Color(0, 0.905882, 0, 1)
+volumetric_fog_emission_energy = 1024.0
+volumetric_fog_length = 152.0
+volumetric_fog_sky_affect = 0.745
