@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public enum GameStates { Intro = 0, Calm = 1, Warning = 2, Danger = 3, GameOver = 4 }
+public enum GameStates { Intro = 0, Calm = 1, Warning = 2, Danger = 3, GameOver = 4, Victory = 5 }
 
 public partial class StateMachine : Node
 {
@@ -27,6 +27,7 @@ public partial class StateMachine : Node
         if(_plant != null)
         {
             _plant.PlantDead += LooseGame;
+            _plant.MaxSizeReached += WinGame;
         }
     }
 
@@ -43,6 +44,11 @@ public partial class StateMachine : Node
     private void BeCalm()
     {
         ChangeState(GameStates.Calm);
+    }
+
+    private void WinGame()
+    {
+        ChangeState(GameStates.Victory);
     }
 
     private void LooseGame()

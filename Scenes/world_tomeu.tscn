@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=13 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
@@ -9,10 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="7_uig2l"]
 [ext_resource type="PackedScene" uid="uid://d2fb42fo21dxv" path="res://Prefabs/UI/ui.tscn" id="8_fcsyh"]
 [ext_resource type="PackedScene" uid="uid://cynftkksee0vb" path="res://Prefabs/System/state_machine.tscn" id="8_j78m8"]
-[ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="10_op6nb"]
+[ext_resource type="PackedScene" uid="uid://del02ufblvgmh" path="res://Prefabs/System/victory_canvas.tscn" id="9_yvlq3"]
+[ext_resource type="PackedScene" uid="uid://b0k8gdwmq363a" path="res://Prefabs/System/game_over_canvas.tscn" id="10_5yj8x"]
 [ext_resource type="PackedScene" uid="uid://bwxuxvqrq6e7q" path="res://Prefabs/System/music_game_state_manager.tscn" id="11_nj761"]
-[ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="11_ph2xv"]
-[ext_resource type="Script" path="res://Scripts/GameOver/GameOverCanvas.cs" id="12_y8w2n"]
 
 [node name="WorldTomeu" type="Node3D"]
 
@@ -67,73 +66,15 @@ _plant = NodePath("../World/Plant")
 _temperature = NodePath("../World/Temperatura")
 _mainPlayerController = NodePath("../ControlablePlayer")
 
-[node name="GameOverCanvas" type="CanvasLayer" parent="." node_paths=PackedStringArray("_machine")]
-visible = false
-script = ExtResource("12_y8w2n")
-_machine = NodePath("../StateMachine")
-
-[node name="GameOverScreen" type="Control" parent="GameOverCanvas"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="GameOverCanvas/GameOverScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="GameOver Text" type="RichTextLabel" parent="GameOverCanvas/GameOverScreen/PanelContainer"]
-clip_contents = false
-custom_minimum_size = Vector2(350, 50)
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("10_op6nb")
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/normal_font = ExtResource("11_ph2xv")
-theme_override_font_sizes/normal_font_size = 50
-text = "GAME OVER!"
-fit_content = true
-scroll_active = false
-
-[node name="Control" type="Control" parent="GameOverCanvas/GameOverScreen/PanelContainer"]
-layout_mode = 2
-
-[node name="Description" type="RichTextLabel" parent="GameOverCanvas/GameOverScreen/PanelContainer/Control"]
-clip_contents = false
-layout_mode = 0
-offset_left = 487.0
-offset_top = 374.0
-offset_right = 669.0
-offset_bottom = 414.0
-text = "Global Warming won"
-
-[node name="Buton" type="Control" parent="GameOverCanvas/GameOverScreen/PanelContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="GameOverCanvas/GameOverScreen/PanelContainer/Buton"]
-layout_mode = 2
-offset_left = 400.0
-offset_top = 451.0
-offset_right = 750.0
-offset_bottom = 506.0
-text = "Press Here to try again"
-
 [node name="MusicGameStateManager" parent="." node_paths=PackedStringArray("_stateMachine") instance=ExtResource("11_nj761")]
 _stateMachine = NodePath("../StateMachine")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("_plant", "_temperatura") instance=ExtResource("8_j78m8")]
 _plant = NodePath("../World/Plant")
 _temperatura = NodePath("../World/Temperatura")
+
+[node name="VictoryCanvas" parent="." node_paths=PackedStringArray("_machine") instance=ExtResource("9_yvlq3")]
+_machine = NodePath("../StateMachine")
+
+[node name="GameOverCanvas" parent="." node_paths=PackedStringArray("_machine") instance=ExtResource("10_5yj8x")]
+_machine = NodePath("../StateMachine")
