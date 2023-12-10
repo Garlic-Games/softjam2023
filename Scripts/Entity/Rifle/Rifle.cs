@@ -8,7 +8,6 @@ public partial class Rifle : Node3D
 
 	[Export]
 	public MeshInstance3D rilfeMesh;
-
 	
 	private Material _defaultGunMaterial;
 	private Material _defaultGunMaterialNoShine;

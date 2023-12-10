@@ -5,7 +5,8 @@ public partial class MainPlayerController : CharacterBody3D
 {
 
 	public Node3D rifleContainer; 
-	public Rifle rifleMesh;
+	public Rifle rifleWeapon;
+	public InteractRifle interactRifle;
 	public Node3D aimPoint;
 	public Camera3D camera;
 	
@@ -21,7 +22,8 @@ public partial class MainPlayerController : CharacterBody3D
 		aimPoint = GetNode<Node3D>("HeadTilt/AimPoint");
 		rifleContainer = GetNode<Node3D>("Visuals/rifle");
 		camera = GetNode<Camera3D>("HeadTilt/Camera3D");
-		rifleMesh = rifleContainer.GetChild<Rifle>(0);
+		rifleWeapon = rifleContainer.GetChild<Rifle>(0);
+		interactRifle = GetNode<InteractRifle>("Scripts/InteractRifle");
 	}
 
 	public override void _PhysicsProcess(double delta) {

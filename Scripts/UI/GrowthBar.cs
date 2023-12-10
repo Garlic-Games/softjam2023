@@ -3,13 +3,11 @@ using System;
 
 public partial class GrowthBar : TextureProgressBar
 {
-    [Export]
-    public Plant _plant;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public void _Init()
     {
-        _plant.SizeChanged += UpdateValue;
+        BarsUI parent = GetParent<BarsUI>();
+        parent._plant.SizeChanged += UpdateValue;
 
     }
 

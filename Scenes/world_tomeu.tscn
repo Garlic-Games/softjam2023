@@ -1,17 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkitb42eo8qr4"]
+[gd_scene load_steps=14 format=3 uid="uid://dkitb42eo8qr4"]
 
 [ext_resource type="PackedScene" uid="uid://dc2wdikhqff8v" path="res://Prefabs/ground.tscn" id="1_s8jru"]
 [ext_resource type="PackedScene" uid="uid://bad3h03kvxp0g" path="res://Prefabs/Plant/plant.tscn" id="2_yufc4"]
 [ext_resource type="PackedScene" uid="uid://du7w0fkl3euh2" path="res://Prefabs/Temperature/temperatura.tscn" id="3_0rimc"]
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="4_t7pus"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_wor1o"]
-[ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="5_f1wjm"]
 [ext_resource type="PackedScene" uid="uid://ctmakpu2wqv6q" path="res://Prefabs/Bird/Bird.tscn" id="6_f0lc5"]
-[ext_resource type="PackedScene" uid="uid://bo43j1q4ha1xn" path="res://Prefabs/UI/temperature_bar.tscn" id="7_kop10"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="7_uig2l"]
+[ext_resource type="PackedScene" uid="uid://d2fb42fo21dxv" path="res://Prefabs/UI/ui.tscn" id="8_fcsyh"]
 [ext_resource type="PackedScene" uid="uid://cynftkksee0vb" path="res://Prefabs/System/state_machine.tscn" id="8_j78m8"]
-[ext_resource type="Texture2D" uid="uid://b351kdxq6t4b6" path="res://Art/UI/humidityBar/green.png" id="8_r31r0"]
-[ext_resource type="Script" path="res://Scripts/UI/GrowthBar.cs" id="9_sd6gy"]
 [ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="10_op6nb"]
 [ext_resource type="PackedScene" uid="uid://bwxuxvqrq6e7q" path="res://Prefabs/System/music_game_state_manager.tscn" id="11_nj761"]
 [ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="11_ph2xv"]
@@ -65,30 +62,10 @@ BirdSky = NodePath("../BirdSky")
 [node name="Bird" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("6_f0lc5")]
 BirdSky = NodePath("../BirdSky")
 
-[node name="Ui" type="CanvasLayer" parent="."]
-
-[node name="HumidityBar" parent="Ui" node_paths=PackedStringArray("_plant") instance=ExtResource("5_f1wjm")]
-offset_left = 14.538
-offset_top = 137.075
-offset_right = 134.538
-offset_bottom = 154.075
-_plant = NodePath("../../World/Plant")
-
-[node name="TemperatureBar" parent="Ui" node_paths=PackedStringArray("_temperatura") instance=ExtResource("7_kop10")]
-offset_left = 18.538
-offset_top = 137.075
-offset_right = 138.538
-offset_bottom = 154.075
-_temperatura = NodePath("../../World/Temperatura")
-
-[node name="GrowthBar" parent="Ui" node_paths=PackedStringArray("_plant") instance=ExtResource("7_kop10")]
-offset_left = 15.0
-offset_top = 624.0
-offset_right = 137.0
-offset_bottom = 664.0
-texture_progress = ExtResource("8_r31r0")
-script = ExtResource("9_sd6gy")
-_plant = NodePath("../../World/Plant")
+[node name="Ui" parent="." node_paths=PackedStringArray("_plant", "_temperature", "_mainPlayerController") instance=ExtResource("8_fcsyh")]
+_plant = NodePath("../World/Plant")
+_temperature = NodePath("../World/Temperatura")
+_mainPlayerController = NodePath("../ControlablePlayer")
 
 [node name="GameOverCanvas" type="CanvasLayer" parent="." node_paths=PackedStringArray("_machine")]
 visible = false

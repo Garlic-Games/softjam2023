@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=15 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="2_pebe0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_p3uih"]
 [ext_resource type="Script" path="res://Scripts/Entity/Bullseye/Bullseye.cs" id="5_a255r"]
 [ext_resource type="Script" path="res://Scripts/Collider/WaterAffectedCollider.cs" id="5_cpp4b"]
+[ext_resource type="PackedScene" uid="uid://d2fb42fo21dxv" path="res://Prefabs/UI/ui.tscn" id="7_evsua"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uylvt"]
 noise_type = 2
@@ -148,3 +149,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bullseye/RigidBody3D"]
 shape = SubResource("BoxShape3D_vclec")
+
+[node name="Ui" parent="." node_paths=PackedStringArray("_mainPlayerController") instance=ExtResource("7_evsua")]
+_mainPlayerController = NodePath("../ControlablePlayer")
