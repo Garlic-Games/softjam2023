@@ -21,6 +21,7 @@ ObjectInstanceProviderAutoLoad="*res://Scripts/Autoload/ObjectInstanceProviderAu
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 MusicManager="*res://Scripts/Autoload/MusicManager.cs"
 DrawLine3d="*res://ExternalAssets/Godot-3D-Lines/DrawLine3D.gd"
+DebugViewPortAutoLoad="*res://Scripts/Autoload/DebugViewPortAutoLoad.cs"
 
 [dotnet]
 
