@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Softjam 2023"
-run/main_scene="res://Scenes/world_guillem.tscn"
+run/main_scene="res://Scenes/world_tomeu.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Art/Logo/logo.png"
 
 [autoload]
 
