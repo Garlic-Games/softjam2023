@@ -15,8 +15,11 @@ public partial class MainPlayerController : CharacterBody3D
 	public InteractRifle interactRifle;
 	public Node3D aimPoint;
 	public Camera3D camera;
-	
-	public const float JumpVelocity = 4.5f;
+    private PlayerGameStateManager _gameStateManager;
+
+    public const float Speed = 5.0f;
+	public const float SprintSpeed = 7.0f;
+    public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -28,7 +31,9 @@ public partial class MainPlayerController : CharacterBody3D
 		camera = GetNode<Camera3D>("HeadTilt/Camera3D");
 		rifleWeapon = rifleContainer.GetChild<Rifle>(0);
 		interactRifle = GetNode<InteractRifle>("Scripts/InteractRifle");
-	}
+        _gameStateManager = GetNode<PlayerGameStateManager>("Scripts/PlayerGameStateManager");
+
+    }
 
 	public override void _PhysicsProcess(double delta) {
 		float speed = Speed;
@@ -68,5 +73,10 @@ public partial class MainPlayerController : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void GameStateChange(int newState, int oldState)
+	{
+		_gameStateManager.StateChange((GameStates)newState, (GameStates)oldState);
 	}
 }
