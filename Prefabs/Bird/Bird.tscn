@@ -19,6 +19,7 @@ transform = Transform3D(-5, -4.37114e-07, 1.91069e-14, 0, -2.18557e-07, -5, 4.37
 
 [node name="Hitbox" type="RigidBody3D" parent="."]
 collision_layer = 65
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("3_7yp1y")
 

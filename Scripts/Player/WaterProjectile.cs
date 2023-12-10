@@ -41,7 +41,7 @@ public partial class WaterProjectile : RigidBody3D {
                 GodotObject collidedWith = collission.GetCollider();
                 Explode();
                 if (collidedWith is WaterAffectedCollider waterCollider) {
-                    GD.Print(waterCollider);
+                    waterCollider.NotifyWaterCollision();
                 }
             }
         }
