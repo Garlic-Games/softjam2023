@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using Softjam2023.Scripts.Entity;
 
-public partial class Hidration : Node3D
+public partial class Hidration : EntityAffectedByWater
 {
     [ExportCategory("Humidity Data")]
     [Export]
@@ -11,8 +12,10 @@ public partial class Hidration : Node3D
     [Export]
     private float _growthTreshold;
     [Export]
-	private float _maxHumidity;
-
+    private float _maxHumidity;
+    [Export]
+    private float _humidityGainedPerHit = 7;
+    
     [ExportCategory("PlantGrowth Settings")]
     [Export]
     private float _minGrowthRatio;
@@ -25,9 +28,17 @@ public partial class Hidration : Node3D
 
 	public override void _Ready()
 	{
+        base._Ready();
 		_sizer = GetNode<Sizer>("../Sizer");
         _plant = GetNode<Plant>("../..");
-        // _collider = GetNode<WaterAffectedCollider>("../Trunk/StaticBody3D");
+    }
+
+    protected override void OnWaterCollided() {
+        _currentHumidity += _humidityGainedPerHit;
+        if (_currentHumidity > _maxHumidity) {
+            _currentHumidity = _maxHumidity;
+        }
+        NotifyHumidityChange();
     }
 
 
@@ -46,6 +57,10 @@ public partial class Hidration : Node3D
             return;
         }
         _currentHumidity -= Convert.ToSingle(_humidityTickPerSecond * delta);
+        NotifyHumidityChange();
+    }
+
+    private void NotifyHumidityChange() {
         _plant.EmitHumidity((_currentHumidity / _maxHumidity) * 100);
     }
 
@@ -67,4 +82,8 @@ public partial class Hidration : Node3D
         var currentGrowthRatio = _minGrowthRatio + ((1/_maxGrowthRatio) * currentHumidityPercentage);
         return currentGrowthRatio;
     }
+    
+
+    public override float currentHumidityValue => _currentHumidity;
+    public override float maximumHumidityValue => _maxHumidity;
 }

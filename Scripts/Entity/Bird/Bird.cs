@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using Softjam2023.Scripts.Entity;
 
-public partial class Bird : Node3D {
+public partial class Bird : EntityAffectedByWater {
     private enum TemperatureStatus {
         Cool,
         Medium,
@@ -24,6 +25,16 @@ public partial class Bird : Node3D {
 
     [Export]
     public float MinFireThreshold = 75f;
+    
+    
+    [Export]
+    public float RatioMin = 1f;
+
+    [Export]
+    public float RatioMax = 2f;
+
+    [Export]
+    public float TempLostPerHit = 7f;
 
     private Node3D seekNode;
 
@@ -32,16 +43,34 @@ public partial class Bird : Node3D {
     private float lastDistance = 99999f;
     private bool moving = false;
     private TemperatureStatus _temperatureStatus = TemperatureStatus.Cool;
+    
+    //
+    private float _ratio;
 
-    private WaterAffectedCollider _waterAffectedCollider;
+    private float _maxTemp = 100f;
+    private float _minTemp = 0f;
+    private float _tempCount = 0f;
+
     private GpuParticles3D _fireParticles;
 
     public override void _Ready() {
-        _waterAffectedCollider = (WaterAffectedCollider) FindChild("Hitbox");
+        base._Ready();
+        _ratio = GD.Randf() * RatioMax + RatioMin;
         _fireParticles = (GpuParticles3D) FindChild("FireParticles");
         Node3D firstNode = BirdSky.getRandomNode();
         GlobalTransform = firstNode.GlobalTransform;
         NextPath();
+    }
+
+    public override void _Process(double delta) {
+        base._Process(delta);
+        if (_tempCount < _maxTemp) {
+            _tempCount += _ratio * (float) delta;
+        }
+
+        if (_tempCount > _maxTemp) {
+            _tempCount = _maxTemp;
+        }
     }
 
     private void NextPath() {
@@ -64,11 +93,11 @@ public partial class Bird : Node3D {
             lastDistance = newDistance;
         }
 
-        if (temperature > MinFireThreshold) {
+        if (currentHumidityValue > MinFireThreshold) {
             _temperatureStatus = TemperatureStatus.Fire;
-        } else if (temperature > MinHotThreshold) {
+        } else if (currentHumidityValue > MinHotThreshold) {
             _temperatureStatus = TemperatureStatus.Hot;
-        } else if (temperature > MinMediumThreshold) {
+        } else if (currentHumidityValue > MinMediumThreshold) {
             _temperatureStatus = TemperatureStatus.Medium;
         } else {
             _temperatureStatus = TemperatureStatus.Cool;
@@ -85,6 +114,13 @@ public partial class Bird : Node3D {
         }
     }
 
+    protected override void OnWaterCollided() {
+        _tempCount -= TempLostPerHit;
+        if (_tempCount < _minTemp) {
+            _tempCount = _minTemp;
+        }
+    }
 
-    public float temperature => _waterAffectedCollider.temperature;
+    public override float currentHumidityValue => _tempCount;
+    public override float maximumHumidityValue => _maxTemp;
 }

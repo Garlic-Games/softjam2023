@@ -33,14 +33,16 @@ script = ExtResource("3_ven8u")
 script = ExtResource("4_8cunl")
 _sizeGrowth = 1.0
 
-[node name="Hidration" type="Node3D" parent="Trunk"]
+[node name="Hidration" type="Node3D" parent="Trunk" node_paths=PackedStringArray("_waterAffectedCollider")]
 script = ExtResource("5_0v0sr")
 _humidityTickPerSecond = 0.5
 _currentHumidity = 8.0
 _growthTreshold = 5.0
 _maxHumidity = 10.0
+_humidityGainedPerHit = 2.0
 _minGrowthRatio = 0.1
 _maxGrowthRatio = 0.15
+_waterAffectedCollider = NodePath("../StaticBody3D")
 
 [node name="Leaf" type="MeshInstance3D" parent="Trunk"]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -51.0387, 96.5258, -48.5539)
@@ -120,7 +122,8 @@ collision_layer = 8
 shape = SubResource("ConcavePolygonShape3D_orbvd")
 
 [node name="StaticBody3D" type="RigidBody3D" parent="Trunk"]
-collision_layer = 8
+collision_layer = 72
+gravity_scale = 0.0
 script = ExtResource("5_dwupk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trunk/StaticBody3D"]

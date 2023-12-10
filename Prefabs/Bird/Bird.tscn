@@ -30,8 +30,9 @@ radius = 1.0
 radial_segments = 16
 rings = 8
 
-[node name="Bird" type="Node3D"]
+[node name="Bird" type="Node3D" node_paths=PackedStringArray("_waterAffectedCollider")]
 script = ExtResource("1_otqqf")
+_waterAffectedCollider = NodePath("Hitbox")
 
 [node name="BirdMesh" parent="." instance=ExtResource("2_2h0ve")]
 transform = Transform3D(-5, -4.37114e-07, 1.91069e-14, 0, -2.18557e-07, -5, 4.37114e-07, -5, 2.18557e-07, 0, 0, 0)

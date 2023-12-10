@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=14 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="2_pebe0"]
 [ext_resource type="PackedScene" uid="uid://ctmakpu2wqv6q" path="res://Prefabs/Bird/Bird.tscn" id="3_1fs37"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_p3uih"]
+[ext_resource type="Script" path="res://Scripts/Entity/Bullseye/Bullseye.cs" id="5_a255r"]
 [ext_resource type="Script" path="res://Scripts/Collider/WaterAffectedCollider.cs" id="5_cpp4b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uylvt"]
@@ -132,8 +133,10 @@ BirdSky = NodePath("../../BirdSky")
 [node name="WaterPond" parent="." instance=ExtResource("4_p3uih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811942, -9.38891, 13.9362)
 
-[node name="Bullseye" type="Node3D" parent="."]
+[node name="Bullseye" type="Node3D" parent="." node_paths=PackedStringArray("_waterAffectedCollider")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63834, 1.87725, -15.2427)
+script = ExtResource("5_a255r")
+_waterAffectedCollider = NodePath("RigidBody3D")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Bullseye"]
 collision_layer = 65
