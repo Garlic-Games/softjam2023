@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctmakpu2wqv6q"]
+[gd_scene load_steps=10 format=3 uid="uid://ctmakpu2wqv6q"]
 
 [ext_resource type="Script" path="res://Scripts/Bird/Bird.cs" id="1_otqqf"]
 [ext_resource type="PackedScene" uid="uid://b4svigjgd5wlv" path="res://Prefabs/Bird/BirdMesh.tscn" id="2_2h0ve"]
 [ext_resource type="Script" path="res://Scripts/Collider/WaterAffectedCollider.cs" id="3_7yp1y"]
+[ext_resource type="Material" uid="uid://dnx86sil5qx8q" path="res://Art/Materials/FireMaterial.tres" id="4_bevk3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8dnc8"]
 radius = 0.3
@@ -10,6 +11,24 @@ height = 3.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nc4g3"]
 size = Vector3(5.975, 0.39, 1.255)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2j3a"]
+emission_shape_offset = Vector3(0.255, 0.955, 0)
+emission_shape_scale = Vector3(3.15, 1, 1.675)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1.12, 1)
+gravity = Vector3(0, 4.5, 0)
+radial_accel_min = 15.0
+radial_accel_max = 35.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w13un"]
+material = ExtResource("4_bevk3")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5tl8b"]
+material = ExtResource("4_bevk3")
+radius = 1.0
+radial_segments = 16
+rings = 8
 
 [node name="Bird" type="Node3D"]
 script = ExtResource("1_otqqf")
@@ -30,3 +49,14 @@ shape = SubResource("CapsuleShape3D_8dnc8")
 [node name="Wings" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197037, 0.12142)
 shape = SubResource("BoxShape3D_nc4g3")
+
+[node name="FireParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0108318, -2.38419e-07, -0.0178506)
+emitting = false
+amount = 50
+lifetime = 0.2
+speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_u2j3a")
+draw_passes = 2
+draw_pass_1 = SubResource("BoxMesh_w13un")
+draw_pass_2 = SubResource("SphereMesh_5tl8b")
