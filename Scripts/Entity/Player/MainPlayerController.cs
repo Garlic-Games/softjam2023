@@ -4,14 +4,18 @@ using System;
 public partial class MainPlayerController : CharacterBody3D
 {
 
+	[Export]
+	public const float Speed = 5.0f;
+	
+	[Export]
+	public const float SprintSpeed = 9.0f;
+	
 	public Node3D rifleContainer; 
 	public Rifle rifleWeapon;
 	public InteractRifle interactRifle;
 	public Node3D aimPoint;
 	public Camera3D camera;
 	
-	public const float Speed = 5.0f;
-	public const float SprintSpeed = 7.0f;
 	public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
