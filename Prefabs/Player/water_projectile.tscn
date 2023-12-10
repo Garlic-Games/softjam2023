@@ -13,16 +13,14 @@ height = 0.1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkad6"]
 gravity = Vector3(0, 0, 0)
-scale_max = 50.0
+scale_max = 30.0
 turbulence_noise_strength = 9.22
 sub_emitter_keep_velocity = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_unpiu"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p73nt"]
 material = ExtResource("1_8dkoa")
 radius = 0.005
-height = 0.01
-radial_segments = 15
-rings = 5
+height = 0.05
 
 [sub_resource type="PrismMesh" id="PrismMesh_145tg"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -30,23 +28,26 @@ left_to_right = 0.4
 size = Vector3(0.385, 0.725, 0.33)
 
 [node name="WaterProjectile" type="RigidBody3D"]
-collision_mask = 64
+collision_mask = 68
+collision_priority = 50.0
 mass = 0.2
+gravity_scale = 0.0
 script = ExtResource("1_1gpxo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_f2qx8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 mesh = SubResource("SphereMesh_v0mfe")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.00344408, 0.0103321)
-amount = 50
-lifetime = 0.01
+amount = 15
+lifetime = 0.02
 randomness = 0.46
 process_material = SubResource("ParticleProcessMaterial_dkad6")
-draw_pass_1 = SubResource("SphereMesh_unpiu")
+draw_pass_1 = SubResource("CapsuleMesh_p73nt")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)

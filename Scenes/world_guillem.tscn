@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=12 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="2_pebe0"]
@@ -24,6 +24,12 @@ subdivide_depth = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ayhq"]
 size = Vector3(200, 0.015, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_he58b"]
+size = Vector3(2, 4, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vclec"]
+size = Vector3(2, 4, 0.2)
 
 [node name="Node3D2" type="Node3D"]
 
@@ -62,3 +68,16 @@ BirdSky = NodePath("../BirdSky")
 
 [node name="WaterPond" parent="." instance=ExtResource("4_p3uih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811942, -9.38891, 13.9362)
+
+[node name="Bullseye" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63834, 1.87725, -15.2427)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Bullseye"]
+collision_layer = 65
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bullseye/RigidBody3D"]
+mesh = SubResource("BoxMesh_he58b")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullseye/RigidBody3D"]
+shape = SubResource("BoxShape3D_vclec")
