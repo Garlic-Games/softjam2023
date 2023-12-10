@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwjwk3opwcwvc"]
+[gd_scene load_steps=13 format=3 uid="uid://dwjwk3opwcwvc"]
 
 [ext_resource type="PackedScene" uid="uid://pkto7eqenqon" path="res://Prefabs/Player/controlable_player.tscn" id="1_lrtr5"]
 [ext_resource type="PackedScene" uid="uid://cnknb7okgo1mu" path="res://Prefabs/BirdSky.tscn" id="2_pebe0"]
 [ext_resource type="PackedScene" uid="uid://ctmakpu2wqv6q" path="res://Prefabs/Bird/Bird.tscn" id="3_1fs37"]
 [ext_resource type="PackedScene" uid="uid://bvpry7jtfxm8v" path="res://Prefabs/water_pond.tscn" id="4_p3uih"]
+[ext_resource type="Script" path="res://Scripts/Collider/WaterAffectedCollider.cs" id="5_cpp4b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uylvt"]
 noise_type = 2
@@ -62,9 +63,71 @@ directional_shadow_max_distance = 72.1
 [node name="BirdSky" parent="." instance=ExtResource("2_pebe0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
-[node name="Bird" parent="." node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+[node name="Birds" type="Node3D" parent="."]
+
+[node name="Bird" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.1025, 0)
-BirdSky = NodePath("../BirdSky")
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird2" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58957, 20.9788, 5.12131)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird3" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93187, 17.4873, 11.8239)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird4" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6658, 17.1231, -9.07678)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird5" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6891, 16.0969, 4.02383)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird6" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.33762, 22.5853, -1.92711)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird7" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61625, 23.0958, -13.6856)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird8" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0728, 23.4347, 12.6599)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird9" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9142, 12.1957, -3.4434)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird10" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26388, 20.1025, -4.29223)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird11" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.51716, 23.2652, 1.8396)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird12" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.264969, 18.5776, 4.22777)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird13" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86313, 24.2818, -6.86697)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird14" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01039, 16.4315, 0.119938)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird15" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72288, 26.7104, -6.65423)
+BirdSky = NodePath("../../BirdSky")
+
+[node name="Bird16" parent="Birds" node_paths=PackedStringArray("BirdSky") instance=ExtResource("3_1fs37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46673, 20.5543, 11.3)
+BirdSky = NodePath("../../BirdSky")
 
 [node name="WaterPond" parent="." instance=ExtResource("4_p3uih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0811942, -9.38891, 13.9362)
@@ -74,6 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63834, 1.87725, -15.2427)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Bullseye"]
 collision_layer = 65
+script = ExtResource("5_cpp4b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bullseye/RigidBody3D"]
 mesh = SubResource("BoxMesh_he58b")

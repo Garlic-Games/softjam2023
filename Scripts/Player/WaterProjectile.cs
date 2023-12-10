@@ -38,16 +38,15 @@ public partial class WaterProjectile : RigidBody3D {
             }
             KinematicCollision3D collission = MoveAndCollide((_customVelocity * (float) delta));
             if (collission != null) {
-                GD.Print(collission);
+                GodotObject collidedWith = collission.GetCollider();
                 Explode();
+                if (collidedWith is WaterAffectedCollider waterCollider) {
+                    GD.Print(waterCollider);
+                }
             }
         }
     }
-
-    public void OnBodyShapeEnteredEventHandler(Rid body_rid, Node body, long body_shape_index, long local_shape_index) {
-        GD.Print(body_rid);
-    }
-
+    
     public void Shoot() {
         status = Status.MOVING;
         //Thanks to: https://forum.godotengine.org/t/godot-3-rotation-doesnt-effect-axis-for-velocity/29980

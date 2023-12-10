@@ -52,9 +52,10 @@ public partial class InteractRifle : Node {
         Vector3 origin = muzzleTransform.Origin;
         Vector3 end = origin + (muzzleTransform.Basis.Z.Normalized() * RAY_LENGTH);
 
-
-        Variant[] drawLineData = new Variant[] {origin, end, new Color(1, 0, 0), 0.3f};
-        _drawLine3d.Call("DrawLine", drawLineData);
+        if (Constants.DebugMode) {
+            Variant[] drawLineData = new Variant[] {origin, end, new Color(1, 0, 0), 0.3f};
+            _drawLine3d.Call("DrawLine", drawLineData);
+        }
 
         PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(origin, end);
         query.CollideWithAreas = true;
