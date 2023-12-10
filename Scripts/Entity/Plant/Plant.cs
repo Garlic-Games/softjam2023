@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class Plant : Node3D
 {
@@ -12,6 +13,18 @@ public partial class Plant : Node3D
     [Signal]
     public delegate void MaxSizeReachedEventHandler();
 
+    [Export]
+    private Temperatura _temperatura;
+    private Hidration _hidration;
+
+    public override void _Ready()
+    {
+        _hidration = GetNode<Hidration>("./Trunk/Hidration");
+        if (_temperatura != null)
+        {
+            _temperatura.TemperatureChanged += ApplyTemperature;
+        }
+    }
 
     public void EmitHumidity(float humidityPercentage)
     {
@@ -33,5 +46,10 @@ public partial class Plant : Node3D
     public void EmitPlantDead()
     {
         EmitSignal(SignalName.PlantDead);
+    }
+
+    public void ApplyTemperature(float percentage)
+    {
+        _hidration.ApplyTemperature(percentage);
     }
 }

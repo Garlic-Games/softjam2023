@@ -6,7 +6,9 @@ public partial class Hidration : EntityAffectedByWater
 {
     [ExportCategory("Humidity Data")]
     [Export]
-    private float _humidityTickPerSecond;
+    private float _temperaturePercentage = 100;
+    [Export]
+    private float _humidityTickPerSecondByTemperature = 0.5f;
     [Export]
     private float _currentHumidity;
     [Export]
@@ -25,8 +27,9 @@ public partial class Hidration : EntityAffectedByWater
 	private Sizer _sizer;
     private Plant _plant;
     private WaterAffectedCollider _collider;
+    private float _humidityTickPerSecond => (_humidityTickPerSecondByTemperature/100) * _temperaturePercentage;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
         base._Ready();
 		_sizer = GetNode<Sizer>("../Sizer");
@@ -83,6 +86,11 @@ public partial class Hidration : EntityAffectedByWater
         return currentGrowthRatio;
     }
     
+    public void ApplyTemperature(float percentage)
+    {
+        _temperaturePercentage = percentage;
+    }
+
 
     public override float currentHumidityValue => _currentHumidity;
     public override float maximumHumidityValue => _maxHumidity;
