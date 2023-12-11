@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Entity/Player/HeadRotation.cs" id="3_nr11c"]
 [ext_resource type="Script" path="res://Scripts/Entity/Player/AimRifle.cs" id="3_uafpg"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/PlayerGameStateManager.cs" id="4_l1fpe"]
-[ext_resource type="Environment" path="res://Prefabs/Environment.tres" id="7_kb5il"]
+[ext_resource type="Environment" uid="uid://b6p5vu7bp41rq" path="res://Prefabs/Environment.tres" id="7_kb5il"]
 [ext_resource type="Script" path="res://Scripts/Entity/Player/PlayerCamera.cs" id="7_w2wi1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jee4i"]

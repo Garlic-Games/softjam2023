@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bad3h03kvxp0g"]
 
-[ext_resource type="PackedScene" uid="uid://g8va3sqvqtfp" path="res://Prefabs/Plant/leaf.tscn" id="2_i82bj"]
+[ext_resource type="PackedScene" path="res://Prefabs/Plant/leaf.tscn" id="2_i82bj"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Plant.cs" id="3_ven8u"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Sizer.cs" id="4_8cunl"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Hidration.cs" id="5_0v0sr"]
@@ -27,8 +27,8 @@ skeleton = NodePath("../..")
 
 [node name="Sizer" type="Node3D" parent="Trunk"]
 script = ExtResource("4_8cunl")
-_sizeGrowth = 0.01
-_maxSize = 1.0
+_sizeGrowth = 7.0
+_maxSize = 490.0
 
 [node name="Hidration" type="Node3D" parent="Trunk" node_paths=PackedStringArray("_waterAffectedCollider")]
 script = ExtResource("5_0v0sr")
@@ -38,15 +38,7 @@ _maxHumidity = 10.0
 _humidityGainedPerHit = 2.0
 _minGrowthRatio = 0.001
 _maxGrowthRatio = 0.01
-_waterAffectedCollider = NodePath("../StaticBody3D")
-
-[node name="StaticBody3D" type="RigidBody3D" parent="Trunk"]
-collision_layer = 72
-gravity_scale = 0.0
-script = ExtResource("5_dwupk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Trunk/StaticBody3D"]
-shape = SubResource("CapsuleShape3D_v618y")
+_waterAffectedCollider = NodePath("../../StaticBody3D")
 
 [node name="Leafs" type="Node3D" parent="Trunk"]
 
@@ -77,3 +69,12 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -35.6207, 0)
 
 [node name="Leaf9" parent="Trunk/Leafs" instance=ExtResource("2_i82bj")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -126.987, 0)
+
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+collision_layer = 72
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("5_dwupk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_v618y")
