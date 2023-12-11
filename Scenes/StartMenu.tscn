@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://y34vs6vjshis"]
+
+[ext_resource type="Texture2D" uid="uid://bolemepaaxh5m" path="res://Art/Logo/logo.jpg" id="1_1q8bk"]
+[ext_resource type="Script" path="res://Scripts/System/GameManager.cs" id="1_n7r1e"]
+[ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="2_1paec"]
+[ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="3_uxxr1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i4l1"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="StartMenu" type="Node3D" node_paths=PackedStringArray("_gameContainer", "_elementToHideOnStart")]
+script = ExtResource("1_n7r1e")
+_waitUntilLoad = 5.0
+_gameContainer = NodePath("GameContainer")
+_elementToHideOnStart = NodePath("SplashScreens")
+
+[node name="SplashScreens" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="SplashScreens"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i4l1")
+
+[node name="Logo" type="Control" parent="SplashScreens/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 45.6
+offset_right = 123.0
+offset_bottom = 295.6
+grow_horizontal = 2
+
+[node name="Logo" type="Sprite2D" parent="SplashScreens/Panel/Logo"]
+position = Vector2(130, 129)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_1q8bk")
+
+[node name="UNWARMED" type="RichTextLabel" parent="SplashScreens/Panel"]
+clip_contents = false
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 291.965
+offset_right = 132.0
+offset_bottom = 359.965
+grow_horizontal = 2
+theme = ExtResource("2_1paec")
+theme_override_colors/default_color = Color(0.458824, 1, 0.0313726, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("3_uxxr1")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[color=#007e00]Un[color=#b93200]Warmed[color=black]!"
+fit_content = true
+scroll_active = false
+
+[node name="Label2" type="Label" parent="SplashScreens/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_top = 361.525
+offset_right = 155.0
+offset_bottom = 384.525
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Videogame developed and presented by"
+
+[node name="Label" type="Label" parent="SplashScreens/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 383.15
+offset_right = 87.0
+offset_bottom = 406.15
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BocD'agla, Soteck and franfranfranfranfranfranfranfran"
+
+[node name="GameContainer" type="Node3D" parent="."]
