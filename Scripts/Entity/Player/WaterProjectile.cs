@@ -1,4 +1,5 @@
 using Godot;
+using Softjam2023.Scripts.Util;
 
 namespace Softjam2023.Scripts.Player;
 
@@ -38,10 +39,17 @@ public partial class WaterProjectile : RigidBody3D {
             }
             KinematicCollision3D collission = MoveAndCollide((_customVelocity * (float) delta));
             if (collission != null) {
+                if (Constants.DebugMode) {
+                    GD.Print("Projectile collided!!" + collission);
+                }
                 GodotObject collidedWith = collission.GetCollider();
                 Explode();
                 if (collidedWith is WaterAffectedCollider waterCollider) {
                     waterCollider.NotifyWaterCollision();
+                } else {
+                    if (Constants.DebugMode) {
+                        GD.Print("But not with a waterCollider!!!");
+                    }
                 }
             }
         }
