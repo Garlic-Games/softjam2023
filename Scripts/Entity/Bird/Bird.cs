@@ -57,9 +57,6 @@ public partial class Bird : EntityAffectedByWater {
         base._Ready();
         _ratio = GD.Randf() * RatioMax + RatioMin;
         _fireParticles = (GpuParticles3D) FindChild("FireParticles");
-        Node3D firstNode = BirdSky.getRandomNode();
-        GlobalTransform = firstNode.GlobalTransform;
-        NextPath();
     }
 
     public override void _Process(double delta) {
@@ -81,6 +78,9 @@ public partial class Bird : EntityAffectedByWater {
     }
 
     public override void _PhysicsProcess(double delta) {
+        if (seekNode == null) {
+            NextPath();
+        }
         if (moving) {
             Translate(direction_forward.Normalized() * Speed * (float) delta);
         }

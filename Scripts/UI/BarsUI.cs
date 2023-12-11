@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Softjam2023.Scripts.StateMachine;
 using Softjam2023.Scripts.UI;
 
 public partial class BarsUI : CanvasLayer
@@ -15,6 +16,9 @@ public partial class BarsUI : CanvasLayer
 	[Export]
 	public MainPlayerController _mainPlayerController;
 
+	[Export]
+	public GameTime _gameTime;
+
 	[ExportCategory("UI Elements")]
 	[Export]
 	public TemperatureBar _temperatureBar;
@@ -24,6 +28,9 @@ public partial class BarsUI : CanvasLayer
 	public GrowthBar _growthBar;
 	[Export]
 	public AmmoBar _ammoBar;
+	
+	[Export]
+	public TimeText _timeShower;
 	
 	public override void _Ready()
 	{
@@ -43,6 +50,12 @@ public partial class BarsUI : CanvasLayer
 			_ammoBar?._Init();
 		} else {
 			_ammoBar.Visible = false;
+		}
+
+		if (_gameTime != null) {
+			_timeShower?._Init();
+		} else {
+			_timeShower.Visible = false;
 		}
 	}
 

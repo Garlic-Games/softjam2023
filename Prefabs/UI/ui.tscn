@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2fb42fo21dxv"]
+[gd_scene load_steps=8 format=3 uid="uid://d2fb42fo21dxv"]
 
 [ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="1_kknfl"]
 [ext_resource type="Script" path="res://Scripts/UI/BarsUI.cs" id="1_o8hog"]
@@ -6,13 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://b351kdxq6t4b6" path="res://Art/UI/humidityBar/green.png" id="3_mbkkj"]
 [ext_resource type="Script" path="res://Scripts/UI/GrowthBar.cs" id="4_28rii"]
 [ext_resource type="Script" path="res://Scripts/UI/AmmoBar.cs" id="6_ghura"]
+[ext_resource type="Script" path="res://Scripts/UI/TimeText.cs" id="7_tkryg"]
 
-[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("_temperatureBar", "_humidityBar", "_growthBar", "_ammoBar")]
+[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("_temperatureBar", "_humidityBar", "_growthBar", "_ammoBar", "_timeShower")]
 script = ExtResource("1_o8hog")
 _temperatureBar = NodePath("TemperatureBar")
 _humidityBar = NodePath("HumidityBar")
 _growthBar = NodePath("GrowthBar")
 _ammoBar = NodePath("AmmoBar")
+_timeShower = NodePath("Label")
 
 [node name="HumidityBar" parent="." instance=ExtResource("1_kknfl")]
 offset_left = 14.538
@@ -51,3 +53,13 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = -1.5708
 script = ExtResource("6_ghura")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0:00"
+script = ExtResource("7_tkryg")

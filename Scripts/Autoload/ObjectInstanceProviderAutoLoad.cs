@@ -60,5 +60,20 @@ public partial class ObjectInstanceProviderAutoLoad : Node {
 
         return null;
     }
+
+    public Bird GimmeABird(Node3D parent)
+    {
+        
+        string path = "res://Prefabs/Bird/Bird.tscn";
+
+        if (ResourceLoader.Load(path) is PackedScene birdResource)
+        {
+            var bird = birdResource.Instantiate();
+            parent.AddChild(bird);
+            return bird as Bird;
+        }
+
+        return null;
+    }
 }
 
