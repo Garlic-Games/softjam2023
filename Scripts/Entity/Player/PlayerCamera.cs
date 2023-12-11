@@ -24,7 +24,7 @@ public partial class PlayerCamera : Camera3D
 
     private bool _transitioning;
     private float _elapsed = 0;
-    private float _maxTime = 2;
+    private float _maxTime = 4;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

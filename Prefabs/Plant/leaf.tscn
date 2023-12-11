@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://g8va3sqvqtfp"]
+
+[ext_resource type="ArrayMesh" uid="uid://byofgum8g1dew" path="res://Art/plant/leafs2_10443_Fern_v2_max2011_it2.res" id="1_ylo5r"]
+[ext_resource type="Script" path="res://Scripts/Entity/Plant/Leaf.cs" id="2_qkmbn"]
+
+[node name="Leaf" type="MeshInstance3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_ylo5r")
+skeleton = NodePath("../..")
+script = ExtResource("2_qkmbn")

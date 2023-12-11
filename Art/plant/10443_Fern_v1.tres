@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cp02py3mqe0t2"]
+
+[ext_resource type="Texture2D" uid="uid://4wew7obpwmax" path="res://Art/plant/leafs2_10443_Fern_v1_Diffuse.jpg" id="1_pj7h3"]
+
+[resource]
+resource_name = "10443_Fern_v1"
+cull_mode = 2
+albedo_texture = ExtResource("1_pj7h3")
+roughness = 0.9

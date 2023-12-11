@@ -18,7 +18,7 @@ public partial class Plant : Node3D
     private Hidration _hidration;
 
     public override void _Ready()
-    {
+    { 
         _hidration = GetNode<Hidration>("./Trunk/Hidration");
         if (_temperatura != null)
         {
