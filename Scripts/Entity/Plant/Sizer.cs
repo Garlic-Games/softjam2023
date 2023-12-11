@@ -27,7 +27,7 @@ public partial class Sizer : Node3D
         }
         _currentSize += _sizeGrowth * growthRate;
 
-        _parent.Scale += Vector3.Up * growthRate;
+        _parent.Scale += Vector3.Up * _sizeGrowth * growthRate;
         _parent.EmitGrowth((_currentSize / _maxSize) * 100);
     }
 }
