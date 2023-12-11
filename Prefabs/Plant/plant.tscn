@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bad3h03kvxp0g"]
 
-[ext_resource type="PackedScene" path="res://Prefabs/Plant/leaf.tscn" id="2_i82bj"]
+[ext_resource type="PackedScene" uid="uid://g8va3sqvqtfp" path="res://Prefabs/Plant/leaf.tscn" id="2_i82bj"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Plant.cs" id="3_ven8u"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Sizer.cs" id="4_8cunl"]
 [ext_resource type="Script" path="res://Scripts/Entity/Plant/Hidration.cs" id="5_0v0sr"]
