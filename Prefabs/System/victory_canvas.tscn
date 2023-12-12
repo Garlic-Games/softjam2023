@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://del02ufblvgmh"]
+[gd_scene load_steps=5 format=3 uid="uid://del02ufblvgmh"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver/VictoryCanvas.cs" id="1_uuh2c"]
 [ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="2_b20fq"]
 [ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="3_op0u4"]
+[ext_resource type="Script" path="res://Scripts/System/ReplayButton.cs" id="4_bkkyv"]
 
 [node name="VictoryCanvas" type="CanvasLayer"]
 visible = false
@@ -76,3 +77,4 @@ text = "Thanks to your efforts this plant has grown enough to survive and with t
 [node name="Button" type="Button" parent="VictoyScreen/CenterContainer/HFlowContainer"]
 layout_mode = 2
 text = "Press Here to play again"
+script = ExtResource("4_bkkyv")

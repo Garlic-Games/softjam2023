@@ -44,7 +44,7 @@ public partial class MainPlayerController : CharacterBody3D
         rifleWeapon = rifleContainer.GetChild<Rifle>(0);
         interactRifle = GetNode<InteractRifle>("Scripts/InteractRifle");
         _gameStateManager = GetNode<PlayerGameStateManager>("Scripts/PlayerGameStateManager");
-
+        camera.MakeCurrent();
     }
 
     public override void _PhysicsProcess(double delta)

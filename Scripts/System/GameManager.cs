@@ -41,11 +41,10 @@ public partial class GameManager : Node3D {
 	}
 
 	public void RestartGame() {
-		_loaded = false;
 		if (_game != null) {
-			_game.GetParent().RemoveChild(_game);
-			QueueFree();
-			LoadGame();
+			var currentScene = GetTree().CurrentScene.SceneFilePath;
+			// print(currentScene) # for Debug
+			GetTree().ChangeSceneToFile(currentScene);
 		}
 	}
 	
