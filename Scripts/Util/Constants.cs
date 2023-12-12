@@ -1,7 +1,7 @@
 ﻿namespace Softjam2023.Scripts.Util; 
 
 public class Constants {
-    public const bool DebugMode = true;
+    public const bool DebugMode = false;
     public static class CollisionLayers {
         public const int Default = 1;
         public const int Player = 2;

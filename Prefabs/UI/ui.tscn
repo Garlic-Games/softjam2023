@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2fb42fo21dxv"]
+[gd_scene load_steps=9 format=3 uid="uid://d2fb42fo21dxv"]
 
 [ext_resource type="PackedScene" uid="uid://dykbqmyhn7lnx" path="res://Scripts/humidity_bar.tscn" id="1_kknfl"]
 [ext_resource type="Script" path="res://Scripts/UI/BarsUI.cs" id="1_o8hog"]
@@ -8,13 +8,17 @@
 [ext_resource type="Script" path="res://Scripts/UI/AmmoBar.cs" id="6_ghura"]
 [ext_resource type="Script" path="res://Scripts/UI/TimeText.cs" id="7_tkryg"]
 
-[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("_temperatureBar", "_humidityBar", "_growthBar", "_ammoBar", "_timeShower")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rq1ex"]
+bg_color = Color(0.6, 0.6, 0.6, 0.254902)
+
+[node name="Ui" type="CanvasLayer" node_paths=PackedStringArray("_temperatureBar", "_humidityBar", "_growthBar", "_ammoBar", "_timeShower", "_pausePanel")]
 script = ExtResource("1_o8hog")
 _temperatureBar = NodePath("TemperatureBar")
 _humidityBar = NodePath("HumidityBar")
 _growthBar = NodePath("GrowthBar")
 _ammoBar = NodePath("AmmoBar")
 _timeShower = NodePath("Label")
+_pausePanel = NodePath("PausePanel")
 
 [node name="HumidityBar" parent="." instance=ExtResource("1_kknfl")]
 offset_left = 14.538
@@ -63,3 +67,143 @@ offset_bottom = 23.0
 grow_horizontal = 0
 text = "0:00"
 script = ExtResource("7_tkryg")
+
+[node name="PausePanel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HumTempPanel" type="Panel" parent="PausePanel"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 25.0
+offset_right = 648.0
+offset_bottom = 228.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rq1ex")
+
+[node name="Label" type="Label" parent="PausePanel/HumTempPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.25
+offset_top = 0.575
+offset_right = 14.25
+offset_bottom = 10.925
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+text = "Humidity and temperature scale:
+
+Here you can see the blue bar as the plant humidity. Make sure that it NEVER depletes. Filling the bar to at least its 70% will make the tree grow. 
+
+The red one as the temperature bar. It indicates the ambien temperature. Higher values will make the humidity of the plant to deplet faster. Keep all birds cool to have it under control."
+autowrap_mode = 3
+
+[node name="TimeLabel" type="Panel" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -294.0
+offset_top = 30.0
+offset_right = -11.0
+offset_bottom = 105.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rq1ex")
+
+[node name="Label" type="Label" parent="PausePanel/TimeLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.375
+offset_top = -0.695
+offset_right = 6.44
+offset_bottom = 10.765
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+text = "Time:
+
+Amount of time you've been playing"
+autowrap_mode = 3
+
+[node name="GrowLabel" type="Panel" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -136.0
+offset_right = 336.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rq1ex")
+
+[node name="Label" type="Label" parent="PausePanel/GrowLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.56
+offset_top = 6.855
+offset_right = 5.56
+offset_bottom = 6.855
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+text = "Grow:
+
+As bigger the better right? Make it reach the top to win! "
+autowrap_mode = 3
+
+[node name="AmmoLabel" type="Panel" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -175.0
+offset_right = -48.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rq1ex")
+
+[node name="Label" type="Label" parent="PausePanel/AmmoLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.145
+offset_top = 3.26
+offset_right = 10.185
+offset_bottom = 3.25999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95, 0.95)
+text = "HTwoO:
+
+What is a gun without ammo? This is the ammount of water that your gun has. Insert the nose in a water pond and right click to reload it."
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -11.5
+offset_right = 115.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 51
+text = "Pres ESC to resume the game!"

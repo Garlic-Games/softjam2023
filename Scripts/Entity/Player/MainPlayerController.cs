@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Softjam2023.Scripts.StateMachine;
 
 public partial class MainPlayerController : CharacterBody3D
 {
@@ -16,6 +17,9 @@ public partial class MainPlayerController : CharacterBody3D
 
     [Export]
     public const float SprintSpeed = 9.0f;
+
+    [Export]
+    public GameTime GameTime;
 
     public Node3D rifleContainer;
     public Rifle rifleWeapon;

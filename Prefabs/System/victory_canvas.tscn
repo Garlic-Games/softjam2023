@@ -4,10 +4,9 @@
 [ext_resource type="Theme" uid="uid://bf76smxecy8y8" path="res://Art/Themes/BasicTheme.tres" id="2_b20fq"]
 [ext_resource type="FontFile" uid="uid://14xvtjdh7w81" path="res://Art/Fonts/Mork Dungeon.ttf" id="3_op0u4"]
 
-[node name="VictoryCanvas" type="CanvasLayer" node_paths=PackedStringArray("_machine")]
+[node name="VictoryCanvas" type="CanvasLayer"]
 visible = false
 script = ExtResource("1_uuh2c")
-_machine = NodePath("")
 
 [node name="VictoyScreen" type="Control" parent="."]
 layout_mode = 3

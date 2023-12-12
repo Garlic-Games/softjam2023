@@ -47,8 +47,9 @@ _temperatura = NodePath("../Temperatura")
 transform = Transform3D(-0.999148, 3.19492e-08, 0.0412654, 0.0236547, 0.819392, 0.572745, -0.0338125, 0.573233, -0.818694, 0, 7.07003, 0)
 light_energy = 0.7
 
-[node name="ControlablePlayer" parent="." instance=ExtResource("4_t7pus")]
+[node name="ControlablePlayer" parent="." node_paths=PackedStringArray("GameTime") instance=ExtResource("4_t7pus")]
 transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 13.2405, 3.44878, -8.45545)
+GameTime = NodePath("../GameTime")
 
 [node name="BirdSky" parent="." instance=ExtResource("7_uig2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.1353, 0)
@@ -79,6 +80,7 @@ _birdRoot = NodePath("../BirdsContainer")
 _temperatura = NodePath("../World/Temperatura")
 
 [node name="GameTime" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("14_1sokv")
 
 [node name="Ui" parent="." node_paths=PackedStringArray("_plant", "_temperature", "_mainPlayerController", "_gameTime") instance=ExtResource("8_fcsyh")]
@@ -87,6 +89,6 @@ _temperature = NodePath("../World/Temperatura")
 _mainPlayerController = NodePath("../ControlablePlayer")
 _gameTime = NodePath("../GameTime")
 
-[connection signal="Jump" from="ControlablePlayer" to="ControlablePlayer/Scripts/AudioManager" method="Jump"]
 [connection signal="StateChanged" from="StateMachine" to="ControlablePlayer" method="GameStateChange"]
 [connection signal="StateChanged" from="StateMachine" to="GameTime" method="GameStateChange"]
+[connection signal="GamePause" from="GameTime" to="Ui" method="GamePauseStateChange"]

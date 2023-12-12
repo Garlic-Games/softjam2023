@@ -22,13 +22,16 @@ public partial class GameManager : Node3D {
 		}
 		_count += (float) delta;
 		if (_count > _waitUntilLoad) {
-			_loaded = true;
 			_elementToHideOnStart.Visible = false;
 			LoadGame();
 		}
 	}
 
 	public void LoadGame() {
+		if (_loaded) {
+			return;
+		}
+		_loaded = true;
 		string path = "res://Scenes/world_tomeu.tscn";
 
 		if (ResourceLoader.Load(path) is PackedScene scene) {
@@ -38,6 +41,7 @@ public partial class GameManager : Node3D {
 	}
 
 	public void RestartGame() {
+		_loaded = false;
 		if (_game != null) {
 			_game.GetParent().RemoveChild(_game);
 			QueueFree();

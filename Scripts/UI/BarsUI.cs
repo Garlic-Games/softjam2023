@@ -32,6 +32,9 @@ public partial class BarsUI : CanvasLayer
 	[Export]
 	public TimeText _timeShower;
 	
+	[Export]
+	public Panel _pausePanel;
+	
 	public override void _Ready()
 	{
 		if (_plant != null) {
@@ -57,6 +60,12 @@ public partial class BarsUI : CanvasLayer
 		} else {
 			_timeShower.Visible = false;
 		}
+	}
+	
+	
+
+	public void GamePauseStateChange(bool newState) {
+		_pausePanel.Visible = newState;
 	}
 
 }
