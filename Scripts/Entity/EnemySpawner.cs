@@ -23,6 +23,8 @@ public partial class EnemySpawner : Node {
     [Export]
     private Node3D _birdRoot;
 
+    [Export]
+    private Temperatura _temperatura;
 
     private ObjectInstanceProviderAutoLoad _autoLoad;
     private List<Bird> _spawnedBirds = new List<Bird>();
@@ -44,6 +46,8 @@ public partial class EnemySpawner : Node {
 
     private void SpawnBird() {
         Bird bird = _autoLoad.GimmeABird(_birdSky.getRandomNode());
+        bird.CooledDown += _temperatura.RemoveHeatSource;
+        bird.OnFire += _temperatura.AddHeatSource;
         bird.BirdSky = _birdSky;
         _spawnedBirds.Add(bird);
     }

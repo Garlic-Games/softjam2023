@@ -37,11 +37,13 @@ public partial class Temperatura : Node3D
     [Export]
     private float _tempReduction = 0.1f;
 
+    private float HeatFraction => _maxTemperature / _maxHeatSources;
+
     private TemperatureStatus _status = TemperatureStatus.Calm;
 
     public override void _Process(double delta)
     {
-        if (_heatSources == 0)
+        if (_currentTemperature > _heatSources * HeatFraction)
         {
             ReduceTemperatureByFrame(delta);
             return;
@@ -65,17 +67,18 @@ public partial class Temperatura : Node3D
 
     private void AddTemperature()
     {
-        int heatSources = _heatSources;
-        if (_heatSources > _maxHeatSources)
-        {
-            heatSources = _maxHeatSources;
-        }
-
+        int heatSources = Mathf.Clamp(_heatSources, 0, _maxHeatSources);
         _currentTemperature += _tempAugment * heatSources;
-        if (_currentTemperature > _maxTemperature)
+        float maxTemperature;
+        if (HeatFraction * heatSources > _maxTemperature)
         {
-            _currentTemperature = _maxTemperature;
+            maxTemperature = _maxTemperature;
         }
+        else
+        {
+            maxTemperature = HeatFraction * heatSources;
+        }
+        _currentTemperature = Mathf.Clamp(_currentTemperature, 0, maxTemperature);
         EmitSignal(SignalName.TemperatureChanged, (_currentTemperature / _maxTemperature)*100 );
     }
 

@@ -4,4 +4,4 @@
 
 [node name="Temperatura" type="Node3D"]
 script = ExtResource("1_euwh2")
-_heatSources = 2
+_currentTemperature = 0.0

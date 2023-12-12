@@ -2,8 +2,17 @@ using Godot;
 using System;
 using Softjam2023.Scripts.Entity;
 
-public partial class Bird : EntityAffectedByWater {
-    private enum TemperatureStatus {
+public partial class Bird : EntityAffectedByWater
+{
+    [Signal]
+    public delegate void CooledDownEventHandler();
+    [Signal]
+    public delegate void WarmedUpEventHandler();
+    [Signal]
+    public delegate void OnFireEventHandler();
+
+    private enum TemperatureStatus
+    {
         Cool,
         Medium,
         Hot,
@@ -25,8 +34,8 @@ public partial class Bird : EntityAffectedByWater {
 
     [Export]
     public float MinFireThreshold = 75f;
-    
-    
+
+
     [Export]
     public float RatioMin = 1f;
 
@@ -43,7 +52,7 @@ public partial class Bird : EntityAffectedByWater {
     private float lastDistance = 99999f;
     private bool moving = false;
     private TemperatureStatus _temperatureStatus = TemperatureStatus.Cool;
-    
+
     //
     private float _ratio;
 
@@ -53,70 +62,113 @@ public partial class Bird : EntityAffectedByWater {
 
     private GpuParticles3D _fireParticles;
 
-    public override void _Ready() {
+    public override void _Ready()
+    {
         base._Ready();
         _ratio = GD.Randf() * RatioMax + RatioMin;
-        _fireParticles = (GpuParticles3D) FindChild("FireParticles");
+        _fireParticles = (GpuParticles3D)FindChild("FireParticles");
     }
 
-    public override void _Process(double delta) {
+    public override void _Process(double delta)
+    {
         base._Process(delta);
-        if (_tempCount < _maxTemp) {
-            _tempCount += _ratio * (float) delta;
+        if (_tempCount < _maxTemp)
+        {
+            _tempCount += _ratio * (float)delta;
         }
 
-        if (_tempCount > _maxTemp) {
+        if (_tempCount > _maxTemp)
+        {
             _tempCount = _maxTemp;
         }
     }
 
-    private void NextPath() {
+    private void NextPath()
+    {
         seekNode = BirdSky.getRandomNode();
         lastDistance = GlobalPosition.DistanceTo(seekNode.GlobalPosition);
         LookAt(seekNode.GlobalPosition);
         moving = true;
     }
 
-    public override void _PhysicsProcess(double delta) {
-        if (seekNode == null) {
+    public override void _PhysicsProcess(double delta)
+    {
+        if (seekNode == null)
+        {
             NextPath();
         }
-        if (moving) {
-            Translate(direction_forward.Normalized() * Speed * (float) delta);
+        if (moving)
+        {
+            Translate(direction_forward.Normalized() * Speed * (float)delta);
         }
 
         float newDistance = GlobalPosition.DistanceTo(seekNode.GlobalPosition);
-        if (newDistance > lastDistance) {
+        if (newDistance > lastDistance)
+        {
             moving = false;
             NextPath();
-        } else {
+        }
+        else
+        {
             lastDistance = newDistance;
         }
 
-        if (currentHumidityValue > MinFireThreshold) {
-            _temperatureStatus = TemperatureStatus.Fire;
-        } else if (currentHumidityValue > MinHotThreshold) {
-            _temperatureStatus = TemperatureStatus.Hot;
-        } else if (currentHumidityValue > MinMediumThreshold) {
-            _temperatureStatus = TemperatureStatus.Medium;
-        } else {
-            _temperatureStatus = TemperatureStatus.Cool;
-        }
+        RunCurrentState();
+    }
 
-        if (_temperatureStatus == TemperatureStatus.Fire) {
-            if (!_fireParticles.Emitting) {
-                _fireParticles.Emitting = true;
-            }
-        } else {
-            if (_fireParticles.Emitting) {
-                _fireParticles.Emitting = false;
-            }
+    private void RunCurrentState()
+    {
+        switch (_temperatureStatus)
+        {
+            case TemperatureStatus.Cool:
+                if (currentHumidityValue >= MinMediumThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Medium;
+                }
+                break;
+            case TemperatureStatus.Medium: //No emision for this one
+                if (currentHumidityValue < MinMediumThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Cool;
+                    EmitSignal(SignalName.CooledDown);
+                }
+                else if (currentHumidityValue >= MinHotThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Hot;
+                    EmitSignal(SignalName.WarmedUp);
+                }
+                break;
+            case TemperatureStatus.Hot:
+                if (currentHumidityValue < MinHotThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Medium;
+                }
+                else if (currentHumidityValue >= MinFireThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Fire;
+                    EmitSignal(SignalName.OnFire);
+                }
+                break;
+            case TemperatureStatus.Fire:
+                if (currentHumidityValue < MinFireThreshold)
+                {
+                    _temperatureStatus = TemperatureStatus.Hot;
+                    _fireParticles.Emitting = false;
+                    EmitSignal(SignalName.WarmedUp);
+                }
+                else if (!_fireParticles.Emitting)
+                {
+                    _fireParticles.Emitting = true;
+                }
+                break;
         }
     }
 
-    protected override void OnWaterCollided() {
+    protected override void OnWaterCollided()
+    {
         _tempCount -= TempLostPerHit;
-        if (_tempCount < _minTemp) {
+        if (_tempCount < _minTemp)
+        {
             _tempCount = _minTemp;
         }
     }
