@@ -27,6 +27,21 @@ public partial class ObjectInstanceProviderAutoLoad : Node {
 
         return null;
     }
+
+    public WaterExplosion GimmeAWaterExplosion()
+    {
+        
+        string path = "res://Prefabs/Player/water_explosion.tscn";
+
+        if (ResourceLoader.Load(path) is PackedScene explosionResource)
+        {
+            var explosion = explosionResource.Instantiate();
+            AddChild(explosion);
+            return explosion as WaterExplosion;
+        }
+
+        return null;
+    }
     
     
 
