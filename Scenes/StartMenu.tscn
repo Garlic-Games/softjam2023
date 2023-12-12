@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://y34vs6vjshis"]
+[gd_scene load_steps=7 format=3 uid="uid://y34vs6vjshis"]
 
 [ext_resource type="Texture2D" uid="uid://bolemepaaxh5m" path="res://Art/Logo/logo.jpg" id="1_1q8bk"]
 [ext_resource type="Script" path="res://Scripts/System/GameManager.cs" id="1_n7r1e"]
@@ -8,15 +8,19 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i4l1"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="StartMenu" type="Node3D" node_paths=PackedStringArray("_gameContainer", "_elementToHideOnStart")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4qxl"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="StartMenu" type="Node3D" node_paths=PackedStringArray("_gameContainer", "_firstPanelToHide", "_secondPanelToHide")]
 script = ExtResource("1_n7r1e")
-_waitUntilLoad = 5.0
 _gameContainer = NodePath("GameContainer")
-_elementToHideOnStart = NodePath("SplashScreens")
+_firstPanelToHide = NodePath("SplashScreens/Panel")
+_secondPanelToHide = NodePath("SplashScreens/Panel2")
 
 [node name="SplashScreens" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="SplashScreens"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,5 +91,36 @@ offset_bottom = 406.15
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BocD'agla, Soteck and François Llado"
+
+[node name="Panel2" type="Panel" parent="SplashScreens"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i4qxl")
+
+[node name="Label" type="Label" parent="SplashScreens/Panel2"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -401.0
+offset_right = 399.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "You are part of the WATR special forces, a global organisation who's only goal is to defeat humanity's enemy: GLOBAL WARMING.
+
+You just found the last \"World Tree\" sappling, a plant that when fully GROWN can stop the planet heating.
+But not everything is good news, the global warming knows the plant location now and has sent his army of selfcombusting seagulls to stop you.
+
+
+Armed with your HTwoO, a weapon able to feed water to any plant and cool down ANY animal, you must make sure the tree reaches its maturity before the Global warming dries it out and with it, any remaining human hope!"
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="GameContainer" type="Node3D" parent="."]
