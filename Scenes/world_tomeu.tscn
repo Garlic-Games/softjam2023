@@ -87,6 +87,5 @@ _temperature = NodePath("../World/Temperatura")
 _mainPlayerController = NodePath("../ControlablePlayer")
 _gameTime = NodePath("../GameTime")
 
-[connection signal="Jump" from="ControlablePlayer" to="ControlablePlayer/Scripts/AudioManager" method="Jump"]
 [connection signal="StateChanged" from="StateMachine" to="ControlablePlayer" method="GameStateChange"]
 [connection signal="StateChanged" from="StateMachine" to="GameTime" method="GameStateChange"]

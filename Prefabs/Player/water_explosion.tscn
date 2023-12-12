@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://en576t84adtu"]
+
+[ext_resource type="Material" uid="uid://l62gcmrprfg1" path="res://Art/water/water.tres" id="1_6f1e7"]
+
+[sub_resource type="Curve" id="Curve_w1acm"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jchvv"]
+curve = SubResource("Curve_w1acm")
+
+[sub_resource type="Curve" id="Curve_x2pqd"]
+min_value = 0.1
+max_value = 0.3
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pmsoi"]
+curve = SubResource("Curve_x2pqd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_klm4e"]
+emission_shape = 2
+emission_sphere_radius = 0.01
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+orbit_velocity_curve = SubResource("CurveTexture_jchvv")
+gravity = Vector3(0, -0.3, 0)
+radial_accel_min = 0.3
+radial_accel_max = 0.5
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_pmsoi")
+
+[sub_resource type="SphereMesh" id="SphereMesh_va2ab"]
+material = ExtResource("1_6f1e7")
+radius = 1.0
+radial_segments = 16
+rings = 8
+
+[node name="WaterExplosion" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11485, 0)
+emitting = false
+amount = 40
+lifetime = 5.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_klm4e")
+draw_pass_1 = SubResource("SphereMesh_va2ab")
