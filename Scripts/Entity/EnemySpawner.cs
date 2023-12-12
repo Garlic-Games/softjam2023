@@ -47,7 +47,7 @@ public partial class EnemySpawner : Node {
     private void SpawnBird() {
         Bird bird = _autoLoad.GimmeABird(_birdSky.getRandomNode());
         bird.CooledDown += _temperatura.RemoveHeatSource;
-        bird.OnFire += _temperatura.AddHeatSource;
+        bird.WarmedUp += _temperatura.AddHeatSource;
         bird.BirdSky = _birdSky;
         _spawnedBirds.Add(bird);
     }

@@ -33,8 +33,8 @@ transform = Transform3D(0.998221, 0, 0.0596201, 0, 1, 0, -0.0596201, 0, 0.998221
 transform = Transform3D(0.999555, 0, 0.0298233, 0, 1, 0, -0.0298233, 0, 0.999555, -32.274, -9.99263, 55.2603)
 
 [node name="Temperatura" parent="World" instance=ExtResource("3_0rimc")]
-_warningTreshold = 6.0
-_dangerTreshold = 9.0
+_warningTreshold = 4.0
+_dangerTreshold = 7.0
 _currentTemperature = 1.0
 _tempAugment = 0.001
 _tempReduction = 0.01
@@ -45,8 +45,7 @@ _temperatura = NodePath("../Temperatura")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.999148, 3.19492e-08, 0.0412654, 0.0236547, 0.819392, 0.572745, -0.0338125, 0.573233, -0.818694, 0, 7.07003, 0)
-light_energy = 2.5
-light_indirect_energy = 2.0
+light_energy = 0.7
 
 [node name="ControlablePlayer" parent="." instance=ExtResource("4_t7pus")]
 transform = Transform3D(-0.946969, 0, 0.321324, 0, 1, 0, -0.321324, 0, -0.946969, 13.2405, 3.44878, -8.45545)
@@ -88,5 +87,6 @@ _temperature = NodePath("../World/Temperatura")
 _mainPlayerController = NodePath("../ControlablePlayer")
 _gameTime = NodePath("../GameTime")
 
+[connection signal="Jump" from="ControlablePlayer" to="ControlablePlayer/Scripts/AudioManager" method="Jump"]
 [connection signal="StateChanged" from="StateMachine" to="ControlablePlayer" method="GameStateChange"]
 [connection signal="StateChanged" from="StateMachine" to="GameTime" method="GameStateChange"]

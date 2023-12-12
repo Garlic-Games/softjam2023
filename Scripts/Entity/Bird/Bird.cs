@@ -18,8 +18,20 @@ public partial class Bird : EntityAffectedByWater
         Hot,
         Fire
     };
+    [ExportCategory("Heat Colors")]
+    [Export]
+    private Color _calmColor = Colors.White;
+    [Export]
+    private Color _warmColor = Colors.Yellow;
+    [Export]
+    private Color _hotColor = Colors.Red;
+    [Export]
+    private Color _fireColor = Colors.DarkRed;
 
+    private MeshInstance3D _birdMesh;
+    private BaseMaterial3D _birdMaterialBaseClone;
 
+    [ExportCategory("Behaviour configuration")]
     [Export]
     public BirdSky BirdSky;
 
@@ -67,6 +79,9 @@ public partial class Bird : EntityAffectedByWater
         base._Ready();
         _ratio = GD.Randf() * RatioMax + RatioMin;
         _fireParticles = (GpuParticles3D)FindChild("FireParticles");
+        _birdMesh = GetNode<MeshInstance3D>("./BirdMesh");
+        _birdMaterialBaseClone = (BaseMaterial3D)((BaseMaterial3D)_birdMesh.Mesh.SurfaceGetMaterial(0)).Duplicate(true);
+        _birdMesh.SetSurfaceOverrideMaterial(0, _birdMaterialBaseClone);
     }
 
     public override void _Process(double delta)
@@ -123,45 +138,77 @@ public partial class Bird : EntityAffectedByWater
             case TemperatureStatus.Cool:
                 if (currentHumidityValue >= MinMediumThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Medium;
+                    EnterMediumState();
                 }
                 break;
-            case TemperatureStatus.Medium: //No emision for this one
+            case TemperatureStatus.Medium: 
                 if (currentHumidityValue < MinMediumThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Cool;
-                    EmitSignal(SignalName.CooledDown);
+                    EnterColdState();
                 }
                 else if (currentHumidityValue >= MinHotThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Hot;
-                    EmitSignal(SignalName.WarmedUp);
+                    EnterHotState();
                 }
                 break;
             case TemperatureStatus.Hot:
                 if (currentHumidityValue < MinHotThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Medium;
+                    EnterMediumState();
                 }
                 else if (currentHumidityValue >= MinFireThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Fire;
-                    EmitSignal(SignalName.OnFire);
+                    EnterFireState();
                 }
                 break;
             case TemperatureStatus.Fire:
                 if (currentHumidityValue < MinFireThreshold)
                 {
-                    _temperatureStatus = TemperatureStatus.Hot;
-                    _fireParticles.Emitting = false;
-                    EmitSignal(SignalName.WarmedUp);
-                }
-                else if (!_fireParticles.Emitting)
-                {
-                    _fireParticles.Emitting = true;
+                    EnterHotState();
                 }
                 break;
         }
+    }
+
+    private void EnterColdState()
+    {
+        ChangeColor(_calmColor);
+        _temperatureStatus = TemperatureStatus.Cool;
+        EmitSignal(SignalName.CooledDown);
+        if (_fireParticles.Emitting)
+        {
+            _fireParticles.Emitting = false;
+        }
+    }
+    private void EnterMediumState()//No emision for this one
+    {
+        ChangeColor(_warmColor);
+        _temperatureStatus = TemperatureStatus.Medium;
+
+        if (_fireParticles.Emitting)
+        {
+            _fireParticles.Emitting = false;
+        }
+    }
+    private void EnterHotState()
+    {
+        ChangeColor(_hotColor);
+        if (!_fireParticles.Emitting)
+        {
+            _fireParticles.Emitting = true;
+        }
+        _temperatureStatus = TemperatureStatus.Hot;
+        EmitSignal(SignalName.WarmedUp);
+    }
+    private void EnterFireState()
+    {
+        ChangeColor(_fireColor);
+        if (!_fireParticles.Emitting)
+        {
+            _fireParticles.Emitting = true;
+        }
+        _temperatureStatus = TemperatureStatus.Fire;
+        EmitSignal(SignalName.OnFire);
     }
 
     protected override void OnWaterCollided()
@@ -171,6 +218,12 @@ public partial class Bird : EntityAffectedByWater
         {
             _tempCount = _minTemp;
         }
+    }
+
+    private void ChangeColor(Color color)
+    {
+        _birdMaterialBaseClone.AlbedoColor = color;
+        _birdMesh.SetSurfaceOverrideMaterial(0, _birdMaterialBaseClone);
     }
 
     public override float currentHumidityValue => _tempCount;
